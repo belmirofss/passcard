@@ -4,6 +4,7 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 import Welcome from '../pages/Welcome';
 
 export default function WithoutPinStackNavigatio() {
+    
     const StackNavigator = createStackNavigator();
 
     const screenOptionStyle: StackNavigationOptions  = {
