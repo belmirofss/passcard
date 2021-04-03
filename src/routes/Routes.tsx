@@ -1,10 +1,16 @@
   
 import React from 'react';
-import WithoutPinStackNavigatio from '../navigation/WithoutPinStackNavigation';
+import PinContext from '../contexts/Pin';
+import WithoutPinStackNavigation from '../navigation/WithoutPinStackNavigation';
+import WithPinStackNavigation from '../navigation/WithPinStackNavigation';
 
 export default function Routes() {
 
-    return (
-        <WithoutPinStackNavigatio />
-    );
+    const { hasPin } = React.useContext(PinContext);
+
+    if (hasPin) {
+        return <WithPinStackNavigation />
+    }
+
+    return <WithoutPinStackNavigation />;
 }

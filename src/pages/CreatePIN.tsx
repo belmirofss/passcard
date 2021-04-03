@@ -1,18 +1,47 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
+import { StyleSheet, View, Text } from 'react-native';
+import { Button, Dialog, Paragraph, Portal, TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-import PASSCARD_ICON from '../images/PASSCARD_ICON.png';
+import PinContext from '../contexts/Pin';
+import Logo from '../components/Logo';
 
 export default function CreatePIN() {
+
+    const pinContext = React.useContext(PinContext);
+
     const [pin, setPin] = React.useState('');
     const [secureTextEntry, setSecureTextEntry] = React.useState(true);
+    const [alertVisible, setAlertVisible] = React.useState(false);
+    const [alertMessage, setAlertMessage] = React.useState('');
+
+    function finish() {
+        if (!pin || pin?.length != 4 || !pin?.match(/^[0-9]+$/)) {
+            setAlertMessage("PIN is invalid! Please, enter 4 numeric characters.");
+            setAlertVisible(true);
+            return;
+        }
+
+        pinContext.savePin(pin);
+    }
 
     return (
         <View style={styles.container}>
-            <Image style={styles.logoImage} source={PASSCARD_ICON} />
+        
+        <Portal>
+            <Dialog visible={alertVisible} onDismiss={() => setAlertVisible(false)}>
+                <Dialog.Title>Error</Dialog.Title>
+                <Dialog.Content>
+                    <Paragraph>{alertMessage}</Paragraph>
+                </Dialog.Content>
+                <Dialog.Actions>
+                    <Button onPress={() => setAlertVisible(false)}>OK</Button>
+                </Dialog.Actions>
+            </Dialog>
+        </Portal>
 
+            <Logo />
+            
             <Text style={styles.createPINText}>
                 Create your PIN
             </Text>
@@ -50,7 +79,7 @@ export default function CreatePIN() {
                     roundness: 100
                 }}
                 mode="contained" 
-                onPress={() => console.log('Pressed')}>
+                onPress={() => finish()}>
                 <Text style={styles.finishButtonText}>FINISH</Text>
             </Button>
         </View>
@@ -62,11 +91,6 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 16,
       justifyContent: 'flex-end'
-    },
-    logoImage: {
-        width: 125,
-        height: 125 * 0.65333333333,
-        marginBottom: 4
     },
     createPINText: {
         fontSize: 24,

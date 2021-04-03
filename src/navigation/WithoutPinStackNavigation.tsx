@@ -4,12 +4,12 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 import Welcome from '../pages/Welcome';
 import CreatePIN from '../pages/CreatePIN';
 
-export default function WithoutPinStackNavigatio() {
+export default function WithoutPinStackNavigation() {
     
     const StackNavigator = createStackNavigator();
 
     const screenOptionStyle: StackNavigationOptions  = {
-        header: () => null
+        headerShown: false
     };
 
     return (

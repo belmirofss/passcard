@@ -4,6 +4,7 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from "@react-navigation/native";
 
 import Routes from './src/routes/Routes';
+import { PinProvider } from './src/contexts/Pin';
 
 const theme = {
   ...DefaultTheme,
@@ -20,7 +21,9 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>
-        <Routes />
+        <PinProvider>
+          <Routes />
+        </PinProvider>
         <StatusBar hidden />
       </NavigationContainer>
     </PaperProvider>

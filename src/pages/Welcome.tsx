@@ -1,9 +1,9 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/core';
 
-import PASSCARD_ICON from '../images/PASSCARD_ICON.png';
+import Logo from '../components/Logo';
 
 export default function Welcome() {
 
@@ -11,7 +11,7 @@ export default function Welcome() {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.logoImage} source={PASSCARD_ICON} />
+            <Logo />
 
             <Text style={styles.welcomeText}>
                 Welcome
@@ -41,11 +41,6 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 16,
       justifyContent: 'flex-end'
-    },
-    logoImage: {
-        width: 125,
-        height: 125 * 0.65333333333,
-        marginBottom: 4
     },
     welcomeText: {
         fontSize: 24,
