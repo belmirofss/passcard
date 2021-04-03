@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/core';
 
-import Logo from '../components/Logo';
+import TitleAndDescription from '../components/TitleAndDescription';
 
 export default function Welcome() {
 
@@ -11,14 +11,11 @@ export default function Welcome() {
 
     return (
         <View style={styles.container}>
-            <Logo />
 
-            <Text style={styles.welcomeText}>
-                Welcome
-            </Text>
-            <Text style={styles.passcardDescriptionText}>
-                PASSCARD saves your card passwords offline and securely.
-            </Text>
+            <TitleAndDescription
+                title="Welcome"
+                description="PASSCARD saves your card passwords offline and securely." 
+            />
 
             <Button
                 style={styles.startButton}
@@ -41,13 +38,6 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 16,
       justifyContent: 'flex-end'
-    },
-    welcomeText: {
-        fontSize: 24,
-        fontWeight: 'bold'
-    },
-    passcardDescriptionText: {
-        fontSize: 16
     },
     startButton: {
         width: '100%',

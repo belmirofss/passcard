@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-import EnterPin from '../pages/EnterPin';
+import Cards from '../pages/Cards';
 
-export default function WithPinStackNavigation() {
+export default function LoggedPinStackNavigation() {
     
     const StackNavigator = createStackNavigator();
 
@@ -13,7 +13,7 @@ export default function WithPinStackNavigation() {
 
     return (
         <StackNavigator.Navigator screenOptions={screenOptionStyle}>
-            <StackNavigator.Screen name="EnterPin" component={EnterPin}/>
+            <StackNavigator.Screen name="Cards" component={Cards}/>
         </StackNavigator.Navigator>
     );
 }

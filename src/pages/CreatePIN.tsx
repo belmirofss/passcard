@@ -1,17 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Dialog, Paragraph, Portal, TextInput } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Button, Dialog, Paragraph, Portal } from 'react-native-paper';
 
 import PinContext from '../contexts/Pin';
-import Logo from '../components/Logo';
+import TitleAndDescription from '../components/TitleAndDescription';
+import InputPin from '../components/InputPin';
 
-export default function CreatePIN() {
+export default function CreatePin() {
 
     const pinContext = React.useContext(PinContext);
 
     const [pin, setPin] = React.useState('');
-    const [secureTextEntry, setSecureTextEntry] = React.useState(true);
     const [alertVisible, setAlertVisible] = React.useState(false);
     const [alertMessage, setAlertMessage] = React.useState('');
 
@@ -28,47 +27,24 @@ export default function CreatePIN() {
     return (
         <View style={styles.container}>
         
-        <Portal>
-            <Dialog visible={alertVisible} onDismiss={() => setAlertVisible(false)}>
-                <Dialog.Title>Error</Dialog.Title>
-                <Dialog.Content>
-                    <Paragraph>{alertMessage}</Paragraph>
-                </Dialog.Content>
-                <Dialog.Actions>
-                    <Button onPress={() => setAlertVisible(false)}>OK</Button>
-                </Dialog.Actions>
-            </Dialog>
-        </Portal>
+            <Portal>
+                <Dialog visible={alertVisible} onDismiss={() => setAlertVisible(false)}>
+                    <Dialog.Title>Error</Dialog.Title>
+                    <Dialog.Content>
+                        <Paragraph>{alertMessage}</Paragraph>
+                    </Dialog.Content>
+                    <Dialog.Actions>
+                        <Button onPress={() => setAlertVisible(false)}>OK</Button>
+                    </Dialog.Actions>
+                </Dialog>
+            </Portal>
 
-            <Logo />
-            
-            <Text style={styles.createPINText}>
-                Create your PIN
-            </Text>
-            <Text style={styles.passcardDescriptionText}>
-                For your security, enter a PIN. Remember not to miss it. It will be used for your access.
-            </Text>
+            <TitleAndDescription 
+                title="Create your PIN"
+                description="For your security, enter a PIN. Remember not to miss it. It will be used for your access." 
+            />     
 
-            <View style={styles.wrapperPinInput}>
-                <TextInput
-                    style={styles.pinInput}
-                    mode="outlined"
-                    label="PIN"
-                    value={pin}
-                    onChangeText={text => setPin(text)}
-                    keyboardType="numeric"
-                    maxLength={4}
-                    secureTextEntry={secureTextEntry}
-                />
-
-                <Button
-                    mode="contained"
-                    color="#d9d9d9" 
-                    onPress={() => setSecureTextEntry(!secureTextEntry)}>
-                    <MaterialCommunityIcons name={secureTextEntry ? 'eye' : 'eye-off'} size={24} color="black" />
-                </Button>
-            </View>
-            
+            <InputPin pin={pin} setPin={setPin} />
 
             <Button
                 style={styles.finishButton}
@@ -91,22 +67,6 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 16,
       justifyContent: 'flex-end'
-    },
-    createPINText: {
-        fontSize: 24,
-        fontWeight: 'bold'
-    },
-    passcardDescriptionText: {
-        fontSize: 16
-    },
-    wrapperPinInput: {
-        marginTop: 6,
-        flexDirection: "row",
-        alignItems: 'center'
-    },
-    pinInput: {
-        flex: 1,
-        marginRight: 4
     },
     finishButton: {
         width: '100%',

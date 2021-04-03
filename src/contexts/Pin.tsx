@@ -5,8 +5,11 @@ import { Keys } from '../enums/Keys';
 interface PinContextData {
     pin: string;
     hasPin: boolean;
-    savePin: Function;
-    clearPin: Function;
+    logged: boolean;
+    savePin(pin: string): Promise<void>;
+    clearPin(): Promise<void>;
+    login(typedPin: string): boolean;
+    logout(): void;
 }
 
 const PinContext = createContext<PinContextData>({} as PinContextData);
@@ -17,6 +20,7 @@ export function PinProvider(props: {
 
     const [pin, setPin] = useState('');
     const [hasPin, setHasPin] = useState(false);
+    const [logged, setLogged] = useState(false);
 
     const savePin = async (pin: string) => {
         if (pin) {
@@ -32,16 +36,40 @@ export function PinProvider(props: {
         setHasPin(false);
     }
 
+    const login = (pinTyped: string): boolean => {
+        if (pinTyped === pin) {
+            setLogged(true);
+            return true;
+        } 
+
+        return false;
+    }
+
+    const logout = () => {
+        setLogged(false);
+    }
+
+    const verifyIfExistsPin = async () => {
+        const pin = await SecureStore.getItemAsync(Keys.PIN);
+        
+        if (pin) {
+            savePin(pin);
+        }
+    }
+
     React.useEffect(() => {
-        clearPin()
+        verifyIfExistsPin();
     }, []);
 
     return (
         <PinContext.Provider value={{
             pin,
             hasPin,
+            logged,
             savePin,
-            clearPin
+            clearPin,
+            login,
+            logout
         }}>
             {props.children}
         </PinContext.Provider>
