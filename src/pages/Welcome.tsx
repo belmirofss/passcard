@@ -25,6 +25,9 @@ export default function Welcome() {
                 contentStyle={{
                     paddingVertical: 12
                 }}
+                theme={{
+                    roundness: 100
+                }}
                 mode="contained" 
                 onPress={() => navigation.navigate('CreatePIN')}>
                 <Text style={styles.startButtonText}>START</Text>
@@ -45,18 +48,18 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     welcomeText: {
-        fontSize: 32,
+        fontSize: 24,
         fontWeight: 'bold'
     },
     passcardDescriptionText: {
-        fontSize: 24
+        fontSize: 16
     },
     startButton: {
         width: '100%',
-        marginTop: 42
+        marginTop: 24
     },
     startButtonText: {
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 'bold',
         color: '#d9d9d9'
     }
