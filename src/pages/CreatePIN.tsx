@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Dialog, Paragraph, Portal } from 'react-native-paper';
+import { Button, Dialog, Portal } from 'react-native-paper';
 
 import PinContext from '../contexts/Pin';
 import TitleAndDescription from '../components/TitleAndDescription';
@@ -29,10 +29,7 @@ export default function CreatePin() {
         
             <Portal>
                 <Dialog visible={alertVisible} onDismiss={() => setAlertVisible(false)}>
-                    <Dialog.Title>Error</Dialog.Title>
-                    <Dialog.Content>
-                        <Paragraph>{alertMessage}</Paragraph>
-                    </Dialog.Content>
+                    <Dialog.Title>Error: {alertMessage}</Dialog.Title>
                     <Dialog.Actions>
                         <Button onPress={() => setAlertVisible(false)}>OK</Button>
                     </Dialog.Actions>

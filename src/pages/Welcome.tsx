@@ -11,7 +11,6 @@ export default function Welcome() {
 
     return (
         <View style={styles.container}>
-
             <TitleAndDescription
                 title="Welcome"
                 description="PASSCARD saves your card passwords offline and securely." 
