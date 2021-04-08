@@ -7,7 +7,8 @@ export default class DatabaseInit {
     database: SQLite.WebSQLDatabase;
 
     constructor() {
-        this.database = DatabaseConnection.getConnection()
+        this.database = DatabaseConnection.getConnection();
+
         this.database.exec([
             { sql: 'PRAGMA foreign_keys = ON;', args: [] }
         ], false, () => {});
@@ -18,14 +19,13 @@ export default class DatabaseInit {
     private initDatabase(): void {
         const sql = `
             CREATE TABLE IF NOT EXISTS CARDS (
-                ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                NAME TEXT,
-                PASSWORD TEXT
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                password TEXT,
+                color TEXT
             );
         `;
 
-        this.database.transaction(
-            transaction => transaction.executeSql(sql)
-        );
+        this.database.transaction(transaction => transaction.executeSql(sql));
     }
 }
