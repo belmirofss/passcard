@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button, Dialog, Portal } from 'react-native-paper';
-import InputPin from '../components/InputPin';
+import InputPassword from '../components/InputPassword';
 import TitleAndDescription from '../components/TitleAndDescription';
 import PinContext from '../contexts/Pin';
 
@@ -35,7 +35,11 @@ export default function EnterPin() {
                 description="To view your cards, enter your PIN." 
             />     
 
-            <InputPin pin={pin} setPin={setPin} />
+            <InputPassword 
+                label="PIN"
+                password={pin} 
+                setPassword={setPin}
+                maxLength={4} />
 
             <Button
                 style={styles.enterButton}

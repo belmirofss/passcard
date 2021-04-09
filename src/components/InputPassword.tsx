@@ -3,25 +3,27 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
-interface InputPinProps {
-    pin: string;
-    setPin(pin: string): void;
+interface InputPasswordProps {
+    label: string;
+    password: string;
+    setPassword(password: string): void;
+    maxLength?: number;
 }
 
-export default function InputPin(props: InputPinProps) {
+export default function InputPassword(props: InputPasswordProps) {
 
     const [secureTextEntry, setSecureTextEntry] = React.useState(true);
 
     return (
-        <View style={styles.wrapperPinInput}>
+        <View style={styles.wrapperPasswordInput}>
             <TextInput
-                style={styles.pinInput}
+                style={styles.passwordInput}
                 mode="outlined"
-                label="PIN"
-                value={props.pin}
-                onChangeText={text => props.setPin(text)}
+                label={props.label}
+                value={props.password}
+                onChangeText={text => props.setPassword(text)}
                 keyboardType="numeric"
-                maxLength={4}
+                maxLength={props.maxLength}
                 secureTextEntry={secureTextEntry}
             />
 
@@ -29,19 +31,22 @@ export default function InputPin(props: InputPinProps) {
                 mode="contained"
                 color="#d9d9d9" 
                 onPress={() => setSecureTextEntry(!secureTextEntry)}>
-                <MaterialCommunityIcons name={secureTextEntry ? 'eye' : 'eye-off'} size={24} color="black" />
+                <MaterialCommunityIcons 
+                    name={secureTextEntry ? 'eye' : 'eye-off'} 
+                    size={24} 
+                    color="black" />
             </Button>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    wrapperPinInput: {
+    wrapperPasswordInput: {
         marginTop: 6,
         flexDirection: "row",
         alignItems: 'center'
     },
-    pinInput: {
+    passwordInput: {
         flex: 1,
         marginRight: 4
     }

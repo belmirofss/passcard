@@ -4,7 +4,7 @@ import { Button, Dialog, Portal } from 'react-native-paper';
 
 import PinContext from '../contexts/Pin';
 import TitleAndDescription from '../components/TitleAndDescription';
-import InputPin from '../components/InputPin';
+import InputPassword from '../components/InputPassword';
 
 export default function CreatePin() {
 
@@ -41,7 +41,11 @@ export default function CreatePin() {
                 description="For your security, enter a PIN. Remember not to miss it. It will be used for your access." 
             />     
 
-            <InputPin pin={pin} setPin={setPin} />
+            <InputPassword
+                label="PIN"
+                password={pin} 
+                setPassword={setPin}
+                maxLength={4} />
 
             <Button
                 style={styles.finishButton}
