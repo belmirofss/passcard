@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
 import Cards from '../pages/Cards';
-import NewCard from '../pages/NewCard';
+import CardForm from '../pages/CardForm';
 import Header from '../components/Header';
 
 export default function LoggedPinStackNavigation() {
@@ -36,9 +36,16 @@ export default function LoggedPinStackNavigation() {
                 }}/>
             <StackNavigator.Screen 
                 name="NewCard" 
-                component={NewCard}
+                component={CardForm}
                 options={{
                     title: 'New card',
+                    headerRight: () => <Header showBackButton />
+                }} /> 
+            <StackNavigator.Screen 
+                name="EditCard" 
+                component={CardForm}
+                options={{
+                    title: 'Editing card',
                     headerRight: () => <Header showBackButton />
                 }} /> 
         </StackNavigator.Navigator>

@@ -1,21 +1,31 @@
-import { useNavigation } from '@react-navigation/core';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import AlertSnack from '../components/AlertSnack';
 import ColorPicker from '../components/ColorPicker';
 import InputPassword from '../components/InputPassword';
+import { Card } from '../models/Card';
 import CardsService from '../services/Cards.service';
 
-export default function NewCard() {
+type ParamList = {
+    Card: {
+      card: Card;
+    };
+};
 
-    const MAX_LENGTH = 24;
+export default function CardForm() {
+
+    const MAX_LENGTH_PASSWORD = 12;
+    const MAX_LENGTH_NAME = 36;
 
     const navigation = useNavigation();
+    const route = useRoute<RouteProp<ParamList, 'Card'>>();
+    const card = route.params?.card;
 
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [color, setColor] = useState('');
+    const [name, setName] = useState(card ? card.name : '');
+    const [password, setPassword] = useState(card ? card.password : '');
+    const [color, setColor] = useState(card ? card.color : '');
     const [alertVisible, setAlertVisible] = React.useState(false);
     const [alertMessage, setAlertMessage] = React.useState('');
 
@@ -33,23 +43,37 @@ export default function NewCard() {
             return;
         }
 
-        if (name.length > MAX_LENGTH) {
+        if (name.length > MAX_LENGTH_NAME) {
             setAlertMessage("You named the card too big. Please put a smaller one!");
             setAlertVisible(true);
             return;
         }
 
-        if (password.length > MAX_LENGTH) {
+        if (password.length > MAX_LENGTH_PASSWORD) {
             setAlertMessage("The password entered is too large. Wouldn't it be smaller?");
             setAlertVisible(true);
             return;
         }
 
-        await CardsService.create({
-            name,
-            password,
-            color
-        });
+        if (!password.match(/^[0-9]+$/)) {
+            setAlertMessage("Password is invalid. Please enter only numeric characters.");
+            setAlertVisible(true);
+            return;
+        }
+
+        if (card?.id) {
+            await CardsService.update(card.id, {
+                name,
+                password,
+                color
+            });
+        } else {
+            await CardsService.create({
+                name,
+                password,
+                color
+            });
+        }
 
         navigation.navigate("Cards");
     }
@@ -68,7 +92,7 @@ export default function NewCard() {
                         label="Name the card"
                         value={name}
                         onChangeText={text => setName(text)}
-                        maxLength={MAX_LENGTH}
+                        maxLength={MAX_LENGTH_NAME}
                         autoFocus
                         autoCorrect={false}
                         theme={{
@@ -82,7 +106,7 @@ export default function NewCard() {
                         label="Enter the card password"
                         password={password} 
                         setPassword={setPassword}
-                        maxLength={MAX_LENGTH} />
+                        maxLength={MAX_LENGTH_PASSWORD} />
 
                     <ColorPicker 
                         label="Select a color for the card"

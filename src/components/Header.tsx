@@ -11,13 +11,11 @@ export default function Header(props: HeaderProps) {
 
     const navigation = useNavigation();
 
-    const iconSize = 28;
-
     return (
         <View style={styles.container}>
             {props.showBackButton && (
                 <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-                    <MaterialCommunityIcons name="keyboard-backspace" size={iconSize} />
+                    <MaterialCommunityIcons name="keyboard-backspace" size={28} />
                 </TouchableOpacity>
             )}
         </View>

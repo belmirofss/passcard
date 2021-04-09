@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { KeyboardTypeOptions, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 interface InputPasswordProps {
@@ -8,7 +8,6 @@ interface InputPasswordProps {
     password: string;
     setPassword(password: string): void;
     maxLength?: number;
-    keyboardType?: KeyboardTypeOptions;
     autoFocus?: boolean;
 }
 
@@ -24,7 +23,7 @@ export default function InputPassword(props: InputPasswordProps) {
                 label={props.label}
                 value={props.password}
                 onChangeText={text => props.setPassword(text)}
-                keyboardType={props.keyboardType}
+                keyboardType="numeric"
                 maxLength={props.maxLength}
                 secureTextEntry={secureTextEntry}
                 autoCorrect={false}

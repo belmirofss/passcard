@@ -36,7 +36,6 @@ export default function EnterPin() {
                     label="PIN"
                     password={pin} 
                     setPassword={setPin}
-                    keyboardType="numeric"
                     maxLength={4}
                     autoFocus />
 

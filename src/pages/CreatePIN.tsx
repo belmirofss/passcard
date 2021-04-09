@@ -42,7 +42,6 @@ export default function CreatePin() {
                     label="PIN"
                     password={pin} 
                     setPassword={setPin}
-                    keyboardType="numeric"
                     maxLength={4}
                     autoFocus />
 
