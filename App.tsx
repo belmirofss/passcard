@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Routes from './src/routes/Routes';
 import { PinProvider } from './src/contexts/Pin';
+import DatabaseInit from './src/database/DatabaseInit';
 
 const theme = {
   ...DefaultTheme,
@@ -18,6 +19,9 @@ const theme = {
 }; 
 
 export default function App() {
+
+  new DatabaseInit();
+
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>

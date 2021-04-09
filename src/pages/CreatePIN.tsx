@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Dialog, Portal } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 import PinContext from '../contexts/Pin';
 import TitleAndDescription from '../components/TitleAndDescription';
 import InputPassword from '../components/InputPassword';
+import AlertSnack from '../components/AlertSnack';
 
 export default function CreatePin() {
 
@@ -25,41 +26,40 @@ export default function CreatePin() {
     }
 
     return (
-        <View style={styles.container}>
-        
-            <Portal>
-                <Dialog visible={alertVisible} onDismiss={() => setAlertVisible(false)}>
-                    <Dialog.Title>Error: {alertMessage}</Dialog.Title>
-                    <Dialog.Actions>
-                        <Button onPress={() => setAlertVisible(false)}>OK</Button>
-                    </Dialog.Actions>
-                </Dialog>
-            </Portal>
+        <React.Fragment>
+            <AlertSnack
+                message={alertMessage}
+                visible={alertVisible} 
+                onDismiss={() => setAlertVisible(false)} />
 
-            <TitleAndDescription 
-                title="Create your PIN"
-                description="For your security, enter a PIN. Remember not to miss it. It will be used for your access." 
-            />     
+            <View style={styles.container}>
+                <TitleAndDescription 
+                    title="Create your PIN"
+                    description="For your security, enter a PIN. Remember not to miss it. It will be used for your access." 
+                />     
 
-            <InputPassword
-                label="PIN"
-                password={pin} 
-                setPassword={setPin}
-                maxLength={4} />
+                <InputPassword
+                    label="PIN"
+                    password={pin} 
+                    setPassword={setPin}
+                    keyboardType="numeric"
+                    maxLength={4}
+                    autoFocus />
 
-            <Button
-                style={styles.finishButton}
-                contentStyle={{
-                    paddingVertical: 12
-                }}
-                theme={{
-                    roundness: 100
-                }}
-                mode="contained" 
-                onPress={() => finish()}>
-                <Text style={styles.finishButtonText}>FINISH</Text>
-            </Button>
-        </View>
+                <Button
+                    style={styles.finishButton}
+                    contentStyle={{
+                        paddingVertical: 12
+                    }}
+                    theme={{
+                        roundness: 100
+                    }}
+                    mode="contained" 
+                    onPress={() => finish()}>
+                    <Text style={styles.finishButtonText}>FINISH</Text>
+                </Button>
+            </View>
+        </React.Fragment>
     );
 }
 

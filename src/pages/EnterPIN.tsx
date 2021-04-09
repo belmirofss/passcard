@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, Dialog, Portal } from 'react-native-paper';
+import { Button } from 'react-native-paper';
+import AlertSnack from '../components/AlertSnack';
 import InputPassword from '../components/InputPassword';
 import TitleAndDescription from '../components/TitleAndDescription';
 import PinContext from '../contexts/Pin';
@@ -19,41 +20,41 @@ export default function EnterPin() {
     }
 
     return (
-        <View style={styles.container}>
+        <React.Fragment>
+            <AlertSnack
+                message="Wrong PIN!"
+                visible={alertVisible} 
+                onDismiss={() => setAlertVisible(false)} />
+                
+            <View style={styles.container}>
+                <TitleAndDescription 
+                    title="Enter with your PIN"
+                    description="To view your cards, enter your PIN." 
+                />     
+
+                <InputPassword 
+                    label="PIN"
+                    password={pin} 
+                    setPassword={setPin}
+                    keyboardType="numeric"
+                    maxLength={4}
+                    autoFocus />
+
+                <Button
+                    style={styles.enterButton}
+                    contentStyle={{
+                        paddingVertical: 12
+                    }}
+                    theme={{
+                        roundness: 100
+                    }}
+                    mode="contained" 
+                    onPress={() => enter()}>
+                    <Text style={styles.enterButtonText}>ENTER</Text>
+                </Button>
+            </View>
+        </React.Fragment>
         
-            <Portal>
-                <Dialog visible={alertVisible} onDismiss={() => setAlertVisible(false)}>
-                    <Dialog.Title>Error: Wrong PIN!</Dialog.Title>
-                    <Dialog.Actions>
-                        <Button onPress={() => setAlertVisible(false)}>OK</Button>
-                    </Dialog.Actions>
-                </Dialog>
-            </Portal>
-
-            <TitleAndDescription 
-                title="Enter with your PIN"
-                description="To view your cards, enter your PIN." 
-            />     
-
-            <InputPassword 
-                label="PIN"
-                password={pin} 
-                setPassword={setPin}
-                maxLength={4} />
-
-            <Button
-                style={styles.enterButton}
-                contentStyle={{
-                    paddingVertical: 12
-                }}
-                theme={{
-                    roundness: 100
-                }}
-                mode="contained" 
-                onPress={() => enter()}>
-                <Text style={styles.enterButtonText}>ENTER</Text>
-            </Button>
-        </View>
     );
 }
 

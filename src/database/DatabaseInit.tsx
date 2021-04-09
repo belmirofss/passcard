@@ -8,11 +8,6 @@ export default class DatabaseInit {
 
     constructor() {
         this.database = DatabaseConnection.getConnection();
-
-        this.database.exec([
-            { sql: 'PRAGMA foreign_keys = ON;', args: [] }
-        ], false, () => {});
-
         this.initDatabase();
     }
 

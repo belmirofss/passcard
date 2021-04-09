@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ToggleButton } from 'react-native-paper';
-import COLORS from '../constants/colors';
+import COLORS from '../constants/Colors';
 import { Color } from '../models/Color';
 
 interface ColorPickerProps {
@@ -24,14 +24,11 @@ export default function ColorPicker(props: ColorPickerProps) {
                             icon={props.color == color.color ? 'check' : ''}
                             style={{
                                 backgroundColor: color.color,
-                                width: 60,
-                                marginRight: 2,
-                                marginBottom: 2,
+                                width: '25%',
                                 borderColor: props.color == color.color ? '#2b2b2b' : 'transparent',
                                 borderWidth: 2,
                             }}
                             color={color.contrast}
-                            value="bluetooth"
                             status={props.color == color.color ? 'checked' : 'unchecked'}
                             onPress={() => props.setColor(color.color)}
                         />
@@ -45,15 +42,20 @@ export default function ColorPicker(props: ColorPickerProps) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 8
+        marginTop: 8,
+        padding: 10,
+        backgroundColor: 'white',
+        borderRadius: 8,
+        borderColor: '#707070',
+        borderWidth: 1
     },
     wrapperColors: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
+        flexWrap: 'wrap'
     },
     labelText: {
-        fontSize: 14,
-        color: '#2b2b2b'
+        fontSize: 16,
+        color: '#707070',
+        marginBottom: 6
     }
 });
