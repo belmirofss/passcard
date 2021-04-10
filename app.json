@@ -20,10 +20,16 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.yabcompany.passcard",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#d9d9d9"
-      }
+      },
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6575307967199593~4388797768"
+      },
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
