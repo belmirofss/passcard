@@ -4,7 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Cards from '../pages/Cards';
 import CardForm from '../pages/CardForm';
 import Header from '../components/Header';
-import ChangePIN from '../pages/ChangePIN';
+import ChangePin from '../pages/ChangePin';
+import ClearAllData from '../pages/ClearAllData';
 
 export default function LoggedPinStackNavigation() {
     
@@ -34,10 +35,17 @@ export default function LoggedPinStackNavigation() {
                 }}
             /> 
             <StackNavigator.Screen 
-                name="ChangePIN" 
-                component={ChangePIN}
+                name="ChangePin" 
+                component={ChangePin}
                 options={{
                     header: () => <Header title="Changing PIN" showBackButton />
+                }}
+            />
+            <StackNavigator.Screen 
+                name="ClearAllData" 
+                component={ClearAllData}
+                options={{
+                    header: () => <Header title="Clear all data" showBackButton />
                 }}
             />
         </StackNavigator.Navigator>

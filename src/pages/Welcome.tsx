@@ -16,7 +16,7 @@ export default function Welcome() {
                 description="PASSCARD saves your card passwords offline and securely." 
             />
 
-            <PrimaryButton text="START" onPress={() => navigation.navigate('CreatePIN')} />
+            <PrimaryButton text="START" onPress={() => navigation.navigate('CreatePin')} />
         </View>
     );
 }

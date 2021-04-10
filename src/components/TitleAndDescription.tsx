@@ -4,17 +4,22 @@ import Logo from './Logo';
 
 interface TitleAndDescriptionProps {
     title: string;
-    description?: string
+    description?: string;
+    notShowLogo?: boolean;
 }
 
 export default function TitleAndDescription(props: TitleAndDescriptionProps) {
     return (
         <View>
-            <Logo />
+            {
+                !props.notShowLogo &&
+                <Logo />
+            }
 
             <Text style={styles.titleText}>
                 {props.title}
             </Text>
+
             {
                 props.description && 
                 <Text style={styles.descriptionText}>

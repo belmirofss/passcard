@@ -20,7 +20,7 @@ export default {
         resolve => database.transaction(
             transaction => {
                 transaction.executeSql(
-                    `INSERT INTO ${table} (name, password, color) VALUES (?, ?, ?)`, 
+                    `INSERT INTO ${table} (name, password, color) VALUES (?, ?, ?);`, 
                     [card.name, card.password, card.color],
                     () => resolve()
                 )
@@ -31,7 +31,7 @@ export default {
         resolve => database.transaction(
             transaction => {
                 transaction.executeSql(
-                    `UPDATE ${table} SET name = ?, password = ?, color = ? WHERE id = ?`, 
+                    `UPDATE ${table} SET name = ?, password = ?, color = ? WHERE id = ?;`, 
                     [card.name, card.password, card.color, cardId],
                     () => resolve()
                 )
@@ -42,8 +42,19 @@ export default {
         resolve => database.transaction(
             transaction => {
                 transaction.executeSql(
-                    `DELETE FROM ${table} WHERE id = ?`, 
+                    `DELETE FROM ${table} WHERE id = ?;`, 
                     [cardId],
+                    () => resolve()
+                )
+            }
+        )
+    ),
+    deleteAllCards: (): Promise<void> => new Promise(
+        resolve => database.transaction(
+            transaction => {
+                transaction.executeSql(
+                    `DELETE FROM ${table};`, 
+                    [],
                     () => resolve()
                 )
             }
@@ -53,7 +64,7 @@ export default {
         resolve => database.transaction(
             transaction => {
                 transaction.executeSql(
-                    `SELECT * FROM ${table}`, 
+                    `SELECT * FROM ${table};`, 
                     [],
                     (_, { rows }) => resolve(extractRows(rows))
                 )

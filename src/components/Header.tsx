@@ -18,7 +18,12 @@ export default function Header(props: HeaderProps) {
 
     const changePinButtonClick = (): void => {
         setVisibleMenu(false);
-        navigation.navigate('ChangePIN');
+        navigation.navigate('ChangePin');
+    }
+
+    const clearAllDataButtonClick = (): void => {
+        setVisibleMenu(false);
+        navigation.navigate('ClearAllData');
     }
 
     return (
@@ -64,13 +69,13 @@ export default function Header(props: HeaderProps) {
                         onPress={changePinButtonClick} 
                     />
                     <Menu.Item 
-                        title="Clean all"
+                        title="Clean all data"
                         icon={() => <MaterialCommunityIcons 
                             name="delete-forever"
                             size={24} 
                             color={Colors.PRIMARY} 
                         />}
-                        onPress={() => {console.log('Option 2 was pressed')}}
+                        onPress={clearAllDataButtonClick}
                     />
                     <Menu.Item 
                         title="About"
