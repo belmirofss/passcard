@@ -56,7 +56,7 @@ export default function Header(props: HeaderProps) {
                         titleStyle={{
                             marginRight: 0
                         }}
-                        onPress={() => {console.log('Option 1 was pressed')}} 
+                        onPress={() => navigation.navigate('ChangePIN')} 
                     />
                     <Menu.Item 
                         title="Clean all"

@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
 import AlertSnack from '../components/AlertSnack';
 import InputPassword from '../components/InputPassword';
+import PrimaryButton from '../components/PrimaryButton';
 import TitleAndDescription from '../components/TitleAndDescription';
 import PinContext from '../contexts/Pin';
-import { Colors } from '../enums/Colors';
 
 export default function EnterPin() {
 
@@ -40,18 +39,7 @@ export default function EnterPin() {
                     maxLength={4}
                     autoFocus />
 
-                <Button
-                    style={styles.enterButton}
-                    contentStyle={{
-                        paddingVertical: 12
-                    }}
-                    theme={{
-                        roundness: 100
-                    }}
-                    mode="contained" 
-                    onPress={() => enter()}>
-                    <Text style={styles.enterButtonText}>ENTER</Text>
-                </Button>
+                <PrimaryButton text="ENTER" onPress={() => enter()} />
             </View>
         </React.Fragment>
         
@@ -63,14 +51,5 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 16,
       justifyContent: 'flex-end'
-    },
-    enterButton: {
-        width: '100%',
-        marginTop: 24
-    },
-    enterButtonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: Colors.SECONDARY
     }
 });

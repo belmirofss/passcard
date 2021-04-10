@@ -9,6 +9,8 @@ import CardView from '../components/CardView';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '../enums/Colors';
 import ConfirmDialog from '../components/ConfirmDialog';
+import PrimaryButton from '../components/PrimaryButton';
+import IconButton from '../components/IconButton';
 
 export default function Cards() {
 
@@ -106,47 +108,21 @@ export default function Cards() {
                             />
 
                             <View style={styles.wrapperActions}>
-                                <Button
-                                    style={styles.actionButton}
-                                    contentStyle={{
-                                        paddingVertical: 2
-                                    }}
-                                    theme={{
-                                        roundness: 100
-                                    }}
-                                    mode="contained" 
-                                    onPress={() => setShowPassword(showPassword ? false : true)}>
-                                    <MaterialCommunityIcons 
-                                        name={showPassword ? 'eye' : 'eye-off'} 
-                                        size={16} 
-                                    />
-                                </Button>
 
-                                <Button
-                                    style={styles.actionButton}
-                                    contentStyle={{
-                                        paddingVertical: 2
-                                    }}
-                                    theme={{
-                                        roundness: 100
-                                    }}
-                                    mode="contained" 
-                                    onPress={() => navigation.navigate('EditCard', {card: cards[activeSlideIndex]})}>
-                                    <MaterialCommunityIcons name="circle-edit-outline" size={16} />
-                                </Button>
+                                <IconButton 
+                                    icon={showPassword ? 'eye' : 'eye-off'} 
+                                    onPress={() => setShowPassword(showPassword ? false : true)}
+                                />
 
-                                <Button
-                                    style={styles.actionButton}
-                                    contentStyle={{
-                                        paddingVertical: 2
-                                    }}
-                                    theme={{
-                                        roundness: 100
-                                    }}
-                                    mode="contained" 
-                                    onPress={() => questionDeleteTheCard(cards[activeSlideIndex])}>
-                                    <MaterialCommunityIcons name="delete-circle-outline" size={16} />
-                                </Button>
+                                <IconButton 
+                                    icon="circle-edit-outline"
+                                    onPress={() => navigation.navigate('EditCard', {card: cards[activeSlideIndex]})}
+                                />
+
+                                <IconButton 
+                                    icon="delete-circle-outline"
+                                    onPress={() => questionDeleteTheCard(cards[activeSlideIndex])}
+                                />
                             </View> 
                         </View>
                     }
@@ -161,22 +137,10 @@ export default function Cards() {
                                 No card registered. Register the first one by clicking the button below.
                             </Text>
                         </View>
-                        
                     }
                 </View>
 
-                <Button
-                    style={styles.newCardButton}
-                    contentStyle={{
-                        paddingVertical: 12
-                    }}
-                    theme={{
-                        roundness: 100
-                    }}
-                    mode="contained" 
-                    onPress={() => navigation.navigate('NewCard')}>
-                    <Text style={styles.newCardButtonText}>NEW CARD</Text>
-                </Button>
+                <PrimaryButton text="NEW CARD" onPress={() => navigation.navigate('NewCard')} />
             </View>
         </React.Fragment>
     );
@@ -188,25 +152,6 @@ const styles = StyleSheet.create({
         padding: 16,
         flexDirection: 'column',
         justifyContent: 'space-between'
-    },
-    newCardButton: {
-        width: '100%',
-        marginTop: 24
-    },
-    newCardButtonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: Colors.SECONDARY
-    },
-    actionButton: {
-        marginTop: 8,
-        width: 20,
-        marginRight: 4
-    },
-    actionButtonText: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: Colors.SECONDARY
     },
     wrapperActions: {
         flexDirection: 'row',

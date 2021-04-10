@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Button } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
 
 import PinContext from '../contexts/Pin';
 import TitleAndDescription from '../components/TitleAndDescription';
 import InputPassword from '../components/InputPassword';
 import AlertSnack from '../components/AlertSnack';
-import { Colors } from '../enums/Colors';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function CreatePin() {
 
@@ -48,18 +47,7 @@ export default function CreatePin() {
                     autoFocus 
                 />
 
-                <Button
-                    style={styles.finishButton}
-                    contentStyle={{
-                        paddingVertical: 12
-                    }}
-                    theme={{
-                        roundness: 100
-                    }}
-                    mode="contained" 
-                    onPress={() => finish()}>
-                    <Text style={styles.finishButtonText}>FINISH</Text>
-                </Button>
+                <PrimaryButton text="FINISH" onPress={() => finish()} />
             </View>
         </React.Fragment>
     );
@@ -70,14 +58,5 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 16,
       justifyContent: 'flex-end'
-    },
-    finishButton: {
-        width: '100%',
-        marginTop: 24
-    },
-    finishButtonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: Colors.SECONDARY
     }
 });

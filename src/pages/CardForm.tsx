@@ -1,11 +1,11 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import AlertSnack from '../components/AlertSnack';
 import ColorPicker from '../components/ColorPicker';
 import InputPassword from '../components/InputPassword';
-import { Colors } from '../enums/Colors';
+import PrimaryButton from '../components/PrimaryButton';
 import { Card } from '../models/Card';
 import CardsService from '../services/Cards.service';
 
@@ -118,18 +118,7 @@ export default function CardForm() {
                     />
                 </View>
 
-                <Button
-                    style={styles.saveButton}
-                    contentStyle={{
-                        paddingVertical: 12
-                    }}
-                    theme={{
-                        roundness: 100
-                    }}
-                    mode="contained" 
-                    onPress={() => save()}>
-                    <Text style={styles.saveButtonText}>SAVE</Text>
-                </Button>
+                <PrimaryButton text="SAVE" onPress={() => save()} />
             </View>
         </React.Fragment>
     );
@@ -141,14 +130,5 @@ const styles = StyleSheet.create({
         padding: 16,
         flexDirection: 'column',
         justifyContent: 'space-between'
-    },
-    saveButton: {
-        width: '100%',
-        marginTop: 24
-    },
-    saveButtonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: Colors.SECONDARY
     }
 });

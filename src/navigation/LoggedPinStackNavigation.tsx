@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Cards from '../pages/Cards';
 import CardForm from '../pages/CardForm';
 import Header from '../components/Header';
+import ChangePIN from '../pages/ChangePIN';
 
 export default function LoggedPinStackNavigation() {
     
@@ -32,6 +33,13 @@ export default function LoggedPinStackNavigation() {
                     header: () => <Header title="Editing card" showBackButton />
                 }}
             /> 
+            <StackNavigator.Screen 
+                name="ChangePIN" 
+                component={ChangePIN}
+                options={{
+                    header: () => <Header title="Changing PIN" showBackButton />
+                }}
+            />
         </StackNavigator.Navigator>
     );
 }
