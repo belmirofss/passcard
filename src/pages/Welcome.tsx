@@ -13,7 +13,7 @@ export default function Welcome() {
         <View style={styles.container}>
             <TitleAndDescription
                 title="Welcome"
-                description="PASSCARD saves your card passwords offline and securely." 
+                description="PASSCARD saves your cards passwords offline and securely." 
             />
 
             <PrimaryButton text="START" onPress={() => navigation.navigate('CreatePin')} />

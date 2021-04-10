@@ -6,6 +6,7 @@ import CardForm from '../pages/CardForm';
 import Header from '../components/Header';
 import ChangePin from '../pages/ChangePin';
 import ClearAllData from '../pages/ClearAllData';
+import About from '../pages/About';
 
 export default function LoggedPinStackNavigation() {
     
@@ -46,6 +47,13 @@ export default function LoggedPinStackNavigation() {
                 component={ClearAllData}
                 options={{
                     header: () => <Header title="Clear all data" showBackButton />
+                }}
+            />
+            <StackNavigator.Screen 
+                name="About" 
+                component={About}
+                options={{
+                    header: () => <Header title="About" showBackButton />
                 }}
             />
         </StackNavigator.Navigator>

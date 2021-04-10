@@ -26,6 +26,11 @@ export default function Header(props: HeaderProps) {
         navigation.navigate('ClearAllData');
     }
 
+    const aboutButtonClick = (): void => {
+        setVisibleMenu(false);
+        navigation.navigate('About');
+    }
+
     return (
         <Appbar.Header 
             theme={{
@@ -84,7 +89,7 @@ export default function Header(props: HeaderProps) {
                             size={24} 
                             color={Colors.PRIMARY} 
                         />}
-                        onPress={() => {console.log('Option 3 was pressed')}}
+                        onPress={aboutButtonClick}
                     />
                 </Menu>
             }
