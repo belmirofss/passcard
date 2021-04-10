@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import { Colors } from '../enums/Colors';
 
 interface InputPasswordProps {
     label: string;
@@ -37,12 +38,13 @@ export default function InputPassword(props: InputPasswordProps) {
 
             <Button
                 mode="contained"
-                color="#d9d9d9" 
+                color={Colors.SECONDARY}
                 onPress={() => setSecureTextEntry(!secureTextEntry)}>
                 <MaterialCommunityIcons 
                     name={secureTextEntry ? 'eye' : 'eye-off'} 
                     size={24} 
-                    color="black" />
+                    color="black"
+                />
             </Button>
         </View>
     );

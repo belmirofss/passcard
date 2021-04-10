@@ -5,6 +5,7 @@ import AlertSnack from '../components/AlertSnack';
 import InputPassword from '../components/InputPassword';
 import TitleAndDescription from '../components/TitleAndDescription';
 import PinContext from '../contexts/Pin';
+import { Colors } from '../enums/Colors';
 
 export default function EnterPin() {
 
@@ -70,6 +71,6 @@ const styles = StyleSheet.create({
     enterButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#d9d9d9'
+        color: Colors.SECONDARY
     }
 });

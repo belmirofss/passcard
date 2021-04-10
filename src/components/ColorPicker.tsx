@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ToggleButton } from 'react-native-paper';
 import COLORS from '../constants/Colors';
+import { Colors } from '../enums/Colors';
 import { Color } from '../models/Color';
 
 interface ColorPickerProps {
@@ -25,7 +26,7 @@ export default function ColorPicker(props: ColorPickerProps) {
                             style={{
                                 backgroundColor: color.color,
                                 width: '25%',
-                                borderColor: props.color == color.color ? '#2b2b2b' : 'transparent',
+                                borderColor: props.color == color.color ? Colors.PRIMARY : 'transparent',
                                 borderWidth: 2,
                             }}
                             color={color.contrast}

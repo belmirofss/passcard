@@ -13,7 +13,7 @@ export default function WithPinStackNavigation() {
 
     return (
         <StackNavigator.Navigator screenOptions={screenOptionStyle}>
-            <StackNavigator.Screen name="EnterPin" component={EnterPin}/>
+            <StackNavigator.Screen name="EnterPin" component={EnterPin} />
         </StackNavigator.Navigator>
     );
 }

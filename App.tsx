@@ -6,15 +6,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import Routes from './src/routes/Routes';
 import { PinProvider } from './src/contexts/Pin';
 import DatabaseInit from './src/database/DatabaseInit';
+import { Colors } from './src/enums/Colors';
 
 const theme = {
   ...DefaultTheme,
   roundness: 6,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#2b2b2b',
-    accent: '#d9d9d9',
-    background: '#d9d9d9'
+    primary: Colors.PRIMARY,
+    accent: Colors.SECONDARY,
+    background: Colors.SECONDARY
   },
 }; 
 

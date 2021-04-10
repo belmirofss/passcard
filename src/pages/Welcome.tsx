@@ -4,6 +4,7 @@ import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/core';
 
 import TitleAndDescription from '../components/TitleAndDescription';
+import { Colors } from '../enums/Colors';
 
 export default function Welcome() {
 
@@ -45,6 +46,6 @@ const styles = StyleSheet.create({
     startButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#d9d9d9'
+        color: Colors.SECONDARY
     }
 });

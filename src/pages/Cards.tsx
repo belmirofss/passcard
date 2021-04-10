@@ -7,6 +7,7 @@ import CardsService from '../services/Cards.service';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import CardView from '../components/CardView';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Colors } from '../enums/Colors';
 
 export default function Cards() {
 
@@ -15,7 +16,7 @@ export default function Cards() {
 
     const [cards, setCards] = React.useState<Card[]>([]);
     const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
-    const [showPassword, setShowPassword] = React.useState(true);
+    const [showPassword, setShowPassword] = React.useState(false);
     const [visibleConfirmDelete, setVisibleConfirmDelete] = React.useState(false);
     const [deletedCard, setDeletedCard] = React.useState<Card | null>();
 
@@ -24,7 +25,6 @@ export default function Cards() {
 
     async function listCards(): Promise<void> {
         const cards = await CardsService.list();
-        console.log(cards);
         setCards(cards);
     }   
 
@@ -34,12 +34,10 @@ export default function Cards() {
     }
 
     const deleteCard = async () => {
-        console.log("ENTROU", deletedCard);
         if (deletedCard?.id) {
             await CardsService.delete(deletedCard.id);
             const cardIndex = cards.findIndex(card => card.id == deletedCard.id);
             cards.splice(cardIndex, 1);
-            console.log("AAA", cards);
             setCards(cards);
         }
 
@@ -92,7 +90,7 @@ export default function Cards() {
                                     width: 6,
                                     height: 6,
                                     borderRadius: 3,
-                                    backgroundColor: '#2b2b2b'
+                                    backgroundColor: Colors.PRIMARY
                                 }}
                                 inactiveDotOpacity={0.4}
                                 inactiveDotScale={0.6}
@@ -107,7 +105,8 @@ export default function Cards() {
                                 containerCustomStyle={{
                                     marginLeft: ITEM_WIDTH * -0.05
                                 }}
-                                onSnapToItem={index => setActiveSlideIndex(index)} />
+                                onSnapToItem={index => setActiveSlideIndex(index)} 
+                            />
 
                             <View style={styles.wrapperActions}>
                                 <Button
@@ -122,7 +121,8 @@ export default function Cards() {
                                     onPress={() => setShowPassword(showPassword ? false : true)}>
                                     <MaterialCommunityIcons 
                                         name={showPassword ? 'eye' : 'eye-off'} 
-                                        size={16} />
+                                        size={16} 
+                                    />
                                 </Button>
 
                                 <Button
@@ -159,7 +159,7 @@ export default function Cards() {
                         <View style={{
                             alignItems: 'center'
                         }}>
-                            <MaterialCommunityIcons name="credit-card-off" size={48} color="#2b2b2b" />
+                            <MaterialCommunityIcons name="credit-card-off" size={48} color={Colors.PRIMARY} />
                             <Text style={styles.noCardRegisteredText}>
                                 No card registered. Register the first one by clicking the button below.
                             </Text>
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     newCardButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#d9d9d9'
+        color: Colors.SECONDARY
     },
     actionButton: {
         marginTop: 8,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     actionButtonText: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: '#d9d9d9'
+        color: Colors.SECONDARY
     },
     wrapperActions: {
         flexDirection: 'row',

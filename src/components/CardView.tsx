@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import COLORS from '../constants/Colors';
+import { Colors } from '../enums/Colors';
 import { Card } from '../models/Card';
 interface CardViewProps {
     card: Card;
@@ -34,7 +35,8 @@ export default function CardView(props: CardViewProps) {
                     size={18} 
                     style={{
                         marginRight: 4
-                    }} />
+                    }} 
+                />
 
                     {
                         props.showPassword &&
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
         height: Dimensions.get("window").width * 0.5,
         borderRadius: 16,
         borderWidth: 3,
-        borderColor: '#2b2b2b',
+        borderColor: Colors.PRIMARY,
         padding: 16,
         justifyContent: 'center',
         shadowColor: "#000",

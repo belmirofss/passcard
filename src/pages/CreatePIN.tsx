@@ -6,6 +6,7 @@ import PinContext from '../contexts/Pin';
 import TitleAndDescription from '../components/TitleAndDescription';
 import InputPassword from '../components/InputPassword';
 import AlertSnack from '../components/AlertSnack';
+import { Colors } from '../enums/Colors';
 
 export default function CreatePin() {
 
@@ -30,7 +31,8 @@ export default function CreatePin() {
             <AlertSnack
                 message={alertMessage}
                 visible={alertVisible} 
-                onDismiss={() => setAlertVisible(false)} />
+                onDismiss={() => setAlertVisible(false)} 
+            />
 
             <View style={styles.container}>
                 <TitleAndDescription 
@@ -43,7 +45,8 @@ export default function CreatePin() {
                     password={pin} 
                     setPassword={setPin}
                     maxLength={4}
-                    autoFocus />
+                    autoFocus 
+                />
 
                 <Button
                     style={styles.finishButton}
@@ -75,6 +78,6 @@ const styles = StyleSheet.create({
     finishButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#d9d9d9'
+        color: Colors.SECONDARY
     }
 });

@@ -5,6 +5,7 @@ import { Button, TextInput } from 'react-native-paper';
 import AlertSnack from '../components/AlertSnack';
 import ColorPicker from '../components/ColorPicker';
 import InputPassword from '../components/InputPassword';
+import { Colors } from '../enums/Colors';
 import { Card } from '../models/Card';
 import CardsService from '../services/Cards.service';
 
@@ -83,7 +84,8 @@ export default function CardForm() {
             <AlertSnack
                 message={alertMessage}
                 visible={alertVisible} 
-                onDismiss={() => setAlertVisible(false)} />
+                onDismiss={() => setAlertVisible(false)} 
+            />
 
             <View style={styles.container}>
                 <View>
@@ -106,12 +108,14 @@ export default function CardForm() {
                         label="Enter the card password"
                         password={password} 
                         setPassword={setPassword}
-                        maxLength={MAX_LENGTH_PASSWORD} />
+                        maxLength={MAX_LENGTH_PASSWORD}
+                    />
 
                     <ColorPicker 
                         label="Select a color for the card"
                         color={color}
-                        setColor={setColor} />
+                        setColor={setColor} 
+                    />
                 </View>
 
                 <Button
@@ -145,6 +149,6 @@ const styles = StyleSheet.create({
     saveButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#d9d9d9'
+        color: Colors.SECONDARY
     }
 });
