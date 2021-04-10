@@ -16,6 +16,11 @@ export default function Header(props: HeaderProps) {
 
     const [visibleMenu, setVisibleMenu] = React.useState(false);
 
+    const changePinButtonClick = (): void => {
+        setVisibleMenu(false);
+        navigation.navigate('ChangePIN')
+    }
+
     return (
         <Appbar.Header 
             theme={{
@@ -56,7 +61,7 @@ export default function Header(props: HeaderProps) {
                         titleStyle={{
                             marginRight: 0
                         }}
-                        onPress={() => navigation.navigate('ChangePIN')} 
+                        onPress={changePinButtonClick} 
                     />
                     <Menu.Item 
                         title="Clean all"

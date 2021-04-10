@@ -1,7 +1,6 @@
-import { useIsFocused, useNavigation } from '@react-navigation/core';
+import { RouteProp, useIsFocused, useNavigation, useRoute } from '@react-navigation/core';
 import React from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
-import { Button } from 'react-native-paper';
 import { Card } from '../models/Card';
 import CardsService from '../services/Cards.service';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
@@ -11,18 +10,28 @@ import { Colors } from '../enums/Colors';
 import ConfirmDialog from '../components/ConfirmDialog';
 import PrimaryButton from '../components/PrimaryButton';
 import IconButton from '../components/IconButton';
+import AlertSnack from '../components/AlertSnack';
+
+type ParamList = {
+    Message: {
+        message: string;
+    };
+};
 
 export default function Cards() {
 
     const navigation = useNavigation();
     const isFocused = useIsFocused();
+    const route = useRoute<RouteProp<ParamList, 'Message'>>();
 
     const [cards, setCards] = React.useState<Card[]>([]);
     const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
     const [showPassword, setShowPassword] = React.useState(false);
     const [visibleConfirmDelete, setVisibleConfirmDelete] = React.useState(false);
     const [deletedCard, setDeletedCard] = React.useState<Card | null>();
-
+    const [alertVisible, setAlertVisible] = React.useState(false);
+    const [alertMessage, setAlertMessage] = React.useState('');
+    
     const SLIDER_WIDTH = Dimensions.get('window').width;
     const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.75);
 
@@ -56,13 +65,17 @@ export default function Cards() {
         item: Card,
         index: number
     }) => {
-
         return (
             <CardView card={renderItem.item} showPassword={showPassword} />
         );
     }
 
     React.useEffect(() => {
+        setAlertVisible(route.params?.message ? true : false);
+        setAlertMessage(route.params?.message ? route.params?.message : '');
+        navigation.setParams({
+            message: null
+        });
         listCards();
     }, [isFocused]);
 
@@ -75,6 +88,12 @@ export default function Cards() {
                 onDismiss={() => setVisibleConfirmDelete(false)}
                 onYes={deleteCard}
                 onNo={closeDialogAndReset}
+            />
+
+            <AlertSnack
+                message={alertMessage}
+                visible={alertVisible} 
+                onDismiss={() => setAlertVisible(false)} 
             />
 
             <View style={styles.container}>

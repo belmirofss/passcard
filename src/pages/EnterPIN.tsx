@@ -15,6 +15,7 @@ export default function EnterPin() {
 
     function enter() {
         if (!pinContext.login(pin)) {
+            setPin('');
             setAlertVisible(true);
         }
     }

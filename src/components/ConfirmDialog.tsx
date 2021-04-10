@@ -21,7 +21,7 @@ export default function ConfirmDialog(props: ConfirmDialogProps) {
             </Dialog.Content>
             <Dialog.Actions>
                 <Button onPress={props.onNo}>NO</Button>
-                <Button onPress={props.onYes}>YES, I WANT</Button>
+                <Button onPress={props.onYes}>YES, I CONFIRM</Button>
             </Dialog.Actions>
             </Dialog>
         </Portal>

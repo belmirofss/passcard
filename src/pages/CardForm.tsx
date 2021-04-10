@@ -76,7 +76,9 @@ export default function CardForm() {
             });
         }
 
-        navigation.navigate("Cards");
+        navigation.navigate('Cards', {
+            message: card?.id ? 'Card edited successfully!' : 'Card created successfully!'
+        });
     }
 
     return (

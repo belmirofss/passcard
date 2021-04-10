@@ -6,6 +6,7 @@ import TitleAndDescription from '../components/TitleAndDescription';
 import InputPassword from '../components/InputPassword';
 import AlertSnack from '../components/AlertSnack';
 import PrimaryButton from '../components/PrimaryButton';
+import ConfirmDialog from '../components/ConfirmDialog';
 
 export default function CreatePin() {
 
@@ -14,9 +15,13 @@ export default function CreatePin() {
     const [pin, setPin] = React.useState('');
     const [alertVisible, setAlertVisible] = React.useState(false);
     const [alertMessage, setAlertMessage] = React.useState('');
+    const [visibleConfirmPin, setVisibleConfirmPin] = React.useState(false);
 
     function finish() {
+        setVisibleConfirmPin(false);
+        
         if (!pin || pin?.length != 4 || !pin?.match(/^[0-9]+$/)) {
+            setPin('');
             setAlertMessage("PIN is invalid! Please, enter 4 numeric characters.");
             setAlertVisible(true);
             return;
@@ -33,6 +38,15 @@ export default function CreatePin() {
                 onDismiss={() => setAlertVisible(false)} 
             />
 
+            <ConfirmDialog 
+                title="Do you confirm that you will remember the PIN created?"
+                paragraph="Remember, you will not be able to recover it!"
+                visible={visibleConfirmPin}
+                onDismiss={() => setVisibleConfirmPin(false)}
+                onYes={finish}
+                onNo={() => setVisibleConfirmPin(false)}
+            />
+
             <View style={styles.container}>
                 <TitleAndDescription 
                     title="Create your PIN"
@@ -47,7 +61,7 @@ export default function CreatePin() {
                     autoFocus 
                 />
 
-                <PrimaryButton text="FINISH" onPress={() => finish()} />
+                <PrimaryButton text="FINISH" onPress={() => setVisibleConfirmPin(true)} />
             </View>
         </React.Fragment>
     );
