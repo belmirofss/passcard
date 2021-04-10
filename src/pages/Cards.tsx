@@ -1,13 +1,14 @@
 import { useIsFocused, useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
-import { Button, Dialog, Paragraph, Portal } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { Card } from '../models/Card';
 import CardsService from '../services/Cards.service';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import CardView from '../components/CardView';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '../enums/Colors';
+import ConfirmDialog from '../components/ConfirmDialog';
 
 export default function Cards() {
 
@@ -65,18 +66,14 @@ export default function Cards() {
 
     return (
         <React.Fragment>
-            <Portal>
-                <Dialog visible={visibleConfirmDelete} onDismiss={() => setVisibleConfirmDelete(false)}>
-                <Dialog.Title>Do you really want to delete the card?</Dialog.Title>
-                <Dialog.Content>
-                    <Paragraph>When you delete the card "{deletedCard?.name}", this action cannot be undone.</Paragraph>
-                </Dialog.Content>
-                <Dialog.Actions>
-                    <Button onPress={closeDialogAndReset}>NO</Button>
-                    <Button onPress={deleteCard}>YES, I WANT</Button>
-                </Dialog.Actions>
-                </Dialog>
-            </Portal>
+            <ConfirmDialog 
+                title="Do you really want to delete the card?"
+                paragraph={`When you delete the card "${deletedCard?.name}", this action cannot be undone.`}
+                visible={visibleConfirmDelete}
+                onDismiss={() => setVisibleConfirmDelete(false)}
+                onYes={deleteCard}
+                onNo={closeDialogAndReset}
+            />
 
             <View style={styles.container}>
                 <View>
