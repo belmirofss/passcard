@@ -73,7 +73,7 @@ export default function Cards() {
 
     React.useEffect(() => {
         ADMobService.showInterstitial();
-    });
+    }, []);
 
     React.useEffect(() => {
         setAlertVisible(route.params?.message ? true : false);
