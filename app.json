@@ -22,7 +22,6 @@
     "android": {
       "package": "com.yabcompany.passcard",
       "versionCode": 1,
-      "slug": "passcard",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#d9d9d9"
