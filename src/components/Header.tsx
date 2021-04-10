@@ -18,7 +18,7 @@ export default function Header(props: HeaderProps) {
 
     const changePinButtonClick = (): void => {
         setVisibleMenu(false);
-        navigation.navigate('ChangePIN')
+        navigation.navigate('ChangePIN');
     }
 
     return (
