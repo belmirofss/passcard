@@ -11,7 +11,6 @@ import ConfirmDialog from '../components/ConfirmDialog';
 import PrimaryButton from '../components/PrimaryButton';
 import IconButton from '../components/IconButton';
 import AlertSnack from '../components/AlertSnack';
-import ADMobService from '../services/ADMob.service';
 
 type ParamList = {
     Message: {
@@ -70,10 +69,6 @@ export default function Cards() {
             <CardView card={renderItem.item} showPassword={showPassword} />
         );
     }
-
-    React.useEffect(() => {
-        ADMobService.showInterstitial();
-    }, []);
 
     React.useEffect(() => {
         setAlertVisible(route.params?.message ? true : false);
