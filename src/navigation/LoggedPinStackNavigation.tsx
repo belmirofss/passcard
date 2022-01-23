@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import Cards from '../pages/Cards';
 import CardForm from '../pages/CardForm';
 import Header from '../components/Header';

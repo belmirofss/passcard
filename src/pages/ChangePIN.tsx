@@ -29,9 +29,9 @@ export default function ChangePIN() {
             }
 
             pinContext.savePin(newPin);
-            navigation.navigate('Cards', {
+            navigation.navigate('Cards' as never, {
                 message: 'PIN changed successfully!'
-            });
+            } as never);
         } else {
             setCurrentPin('');
             setNewPin('');

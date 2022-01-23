@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-
 import PASSCARD_ICON from '../images/PASSCARD_ICON.png';
 
 const IMAGE_WIDTH = 125;

@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TitleAndDescription from '../components/TitleAndDescription';
-
 import appInfo from '../../app.json';
 
 export default function About() {
 
-    return(
+    return (
         <View style={styles.container}>
             
             <TitleAndDescription

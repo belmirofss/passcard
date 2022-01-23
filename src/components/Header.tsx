@@ -18,17 +18,17 @@ export default function Header(props: HeaderProps) {
 
     const changePinButtonClick = (): void => {
         setVisibleMenu(false);
-        navigation.navigate('ChangePin');
+        navigation.navigate('ChangePin' as never);
     }
 
     const clearAllDataButtonClick = (): void => {
         setVisibleMenu(false);
-        navigation.navigate('ClearAllData');
+        navigation.navigate('ClearAllData' as never);
     }
 
     const aboutButtonClick = (): void => {
         setVisibleMenu(false);
-        navigation.navigate('About');
+        navigation.navigate('About' as never);
     }
 
     return (
@@ -38,7 +38,7 @@ export default function Header(props: HeaderProps) {
                     primary: 'white'
                 }
             }}
-            statusBarHeight={0}
+            statusBarHeight={24}
         >
             <Appbar.Content title={props.title} />
             {

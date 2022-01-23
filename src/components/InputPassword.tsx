@@ -34,9 +34,13 @@ export default function InputPassword(props: InputPasswordProps) {
                         background: 'white'
                     }
                 }}
+                autoComplete={false}
             />
 
             <Button
+                style={{
+                    marginTop: 4
+                }}
                 mode="contained"
                 color={Colors.SECONDARY}
                 onPress={() => setSecureTextEntry(!secureTextEntry)}>

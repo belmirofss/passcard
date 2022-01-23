@@ -29,7 +29,7 @@ export default function App() {
         <PinProvider>
           <Routes />
         </PinProvider>
-        <StatusBar hidden />
+        <StatusBar />
       </NavigationContainer>
     </PaperProvider>
   );

@@ -38,7 +38,8 @@ export default function EnterPin() {
                     password={pin} 
                     setPassword={setPin}
                     maxLength={4}
-                    autoFocus />
+                    autoFocus
+                />
 
                 <PrimaryButton text="ENTER" onPress={() => enter()} />
             </View>

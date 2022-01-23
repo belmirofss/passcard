@@ -76,9 +76,9 @@ export default function CardForm() {
             });
         }
 
-        navigation.navigate('Cards', {
+        navigation.navigate('Cards' as never, {
             message: card?.id ? 'Card edited successfully!' : 'Card created successfully!'
-        });
+        } as never);
     }
 
     return (
@@ -104,6 +104,7 @@ export default function CardForm() {
                                 background: 'white'
                             }
                         }}
+                        autoComplete={false}
                     />
 
                     <InputPassword

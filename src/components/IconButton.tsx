@@ -24,7 +24,7 @@ export default function IconButton(props: IconButtonProps) {
             onPress={() => props.onPress()}>
             <MaterialCommunityIcons 
                 name={props.icon} 
-                size={16} 
+                size={18} 
             />
         </Button>
     );
@@ -33,7 +33,7 @@ export default function IconButton(props: IconButtonProps) {
 const styles = StyleSheet.create({
     button: {
         marginTop: 8,
-        width: 20,
+        width: 28,
         marginRight: 4
     },
     buttonText: {
