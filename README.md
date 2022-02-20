@@ -1,6 +1,6 @@
 ![Statsfy](https://i.imgur.com/cuMufUI.png "PASSCARD")
 
-# PASSCARD
+# PASSCARD, powered by Expo
 PASSCARD is an app that helps you to remember card passwords. The app saves passwords on your device offline and securely.
 
 [Download now](https://play.google.com/store/apps/details?id=com.yabcompany.passcard)
