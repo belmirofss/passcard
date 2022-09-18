@@ -3,32 +3,32 @@ import { StatusBar } from "expo-status-bar";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 
-import Routes from "./src/routes/Routes";
+import Routes from "./src/Routes";
 import { PinProvider } from "./src/contexts/Pin";
-import DatabaseInit from "./src/database/DatabaseInit";
-import { Colors } from "./src/enums/Colors";
+import { theme } from "./src/theme";
+import Database from "./src/database";
 
-const theme = {
+const paperTheme = {
   ...DefaultTheme,
   roundness: 6,
   colors: {
     ...DefaultTheme.colors,
-    primary: Colors.PRIMARY,
-    accent: Colors.SECONDARY,
-    background: Colors.SECONDARY,
+    primary: theme.colors.primary,
+    accent: theme.colors.secondary,
+    background: theme.colors.secondary,
   },
 };
 
 export default function App() {
-  new DatabaseInit();
+  new Database();
 
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider theme={paperTheme}>
       <NavigationContainer>
         <PinProvider>
           <Routes />
         </PinProvider>
-        <StatusBar />
+        <StatusBar hidden />
       </NavigationContainer>
     </PaperProvider>
   );

@@ -1,44 +1,40 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
-import { Colors } from '../enums/Colors';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { Button } from "react-native-paper";
+import { theme } from "../theme";
 
-interface IconButtonProps {
-    icon: any;
-    onPress(): void;
-}
+type Props = {
+  icon: any;
+  onPress: () => void;
+};
 
-export default function IconButton(props: IconButtonProps) {
-
-    return (
-        <Button
-            style={styles.button}
-            contentStyle={{
-                paddingVertical: 2
-            }}
-            theme={{
-                roundness: 100
-            }}
-            mode="contained" 
-            onPress={() => props.onPress()}>
-            <MaterialCommunityIcons 
-                name={props.icon} 
-                size={18} 
-            />
-        </Button>
-    );
+export default function IconButton({ icon, onPress }: Props) {
+  return (
+    <Button
+      style={styles.button}
+      contentStyle={{
+        paddingVertical: 2,
+      }}
+      theme={{
+        roundness: 100,
+      }}
+      mode="contained"
+      onPress={onPress}
+    >
+      <MaterialCommunityIcons name={icon} size={18} />
+    </Button>
+  );
 }
 
 const styles = StyleSheet.create({
-    button: {
-        marginTop: 8,
-        width: 28,
-        marginRight: 4
-    },
-    buttonText: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: Colors.SECONDARY
-    }
+  button: {
+    width: 28,
+    marginRight: 4,
+  },
+  buttonText: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: theme.colors.secondary,
+  },
 });
