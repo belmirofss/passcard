@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AlertSnack from "../components/AlertSnack";
 import InputPassword from "../components/InputPassword";
 import PrimaryButton from "../components/PrimaryButton";
 import TitleAndDescription from "../components/TitleAndDescription";
 import PinContext from "../contexts/Pin";
+import { AdMobInterstitial } from "expo-ads-admob";
+import Constants from "expo-constants";
 
 export default function EnterPin() {
   const pinContext = useContext(PinContext);
@@ -12,10 +14,20 @@ export default function EnterPin() {
   const [pin, setPin] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
 
-  function enter() {
+  useEffect(() => {
+    const testID = "ca-app-pub-3940256099942544/1033173712";
+    const productionID = "ca-app-pub-6575307967199593/5412089372";
+    const adUnitID = Constants.isDevice && !__DEV__ ? productionID : testID;
+    AdMobInterstitial.setAdUnitID(adUnitID).catch((err) => console.log(err));
+  }, []);
+
+  async function enter() {
     if (!pinContext.login(pin)) {
       setPin("");
       setAlertVisible(true);
+    } else {
+      await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
+      await AdMobInterstitial.showAdAsync();
     }
   }
 
