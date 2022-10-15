@@ -16,7 +16,7 @@ export default function EnterPin() {
 
   useEffect(() => {
     const testID = "ca-app-pub-3940256099942544/1033173712";
-    const productionID = "ca-app-pub-6575307967199593/5412089372";
+    const productionID = "ca-app-pub-6575307967199593/6000899278";
     const adUnitID = Constants.isDevice && !__DEV__ ? productionID : testID;
     AdMobInterstitial.setAdUnitID(adUnitID).catch((err) => console.log(err));
   }, []);
