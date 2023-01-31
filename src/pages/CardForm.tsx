@@ -113,14 +113,18 @@ export default function CardForm() {
             autoComplete="off"
           />
 
-          <InputPassword
-            label="Password"
-            password={password}
-            setPassword={setPassword}
-            maxLength={MAX_LENGTH_PASSWORD}
-          />
+          <View style={styles.wrapperInputPassword}>
+            <InputPassword
+              label="Password"
+              password={password}
+              setPassword={setPassword}
+              maxLength={MAX_LENGTH_PASSWORD}
+            />
+          </View>
 
-          <ColorPicker label="Color" color={color} setColor={setColor} />
+          <View style={styles.wrapperColorPicker}>
+            <ColorPicker label="Color" color={color} setColor={setColor} />
+          </View>
         </View>
 
         <PrimaryButton text="SAVE" onPress={save} />
@@ -135,5 +139,11 @@ const styles = StyleSheet.create({
     padding: 16,
     flexDirection: "column",
     justifyContent: "space-between",
+  },
+  wrapperInputPassword: {
+    marginTop: 12,
+  },
+  wrapperColorPicker: {
+    marginTop: 12,
   },
 });

@@ -29,6 +29,7 @@ export default function PrimaryButton({ text, onPress }: Props) {
 const styles = StyleSheet.create({
   button: {
     width: "100%",
+    marginTop: 12,
   },
   buttonText: {
     fontSize: 16,

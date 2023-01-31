@@ -1,21 +1,21 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   RouteProp,
   useIsFocused,
   useNavigation,
   useRoute,
 } from "@react-navigation/core";
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
-import CardView from "../components/CardView";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import ConfirmDialog from "../components/ConfirmDialog";
-import PrimaryButton from "../components/PrimaryButton";
-import IconButton from "../components/IconButton";
-import AlertSnack from "../components/AlertSnack";
-import { Card } from "../types";
-import { theme } from "../theme";
 import { deleteCard, listCards } from "../api/cards";
+import AlertSnack from "../components/AlertSnack";
+import CardView from "../components/CardView";
+import ConfirmDialog from "../components/ConfirmDialog";
+import IconButton from "../components/IconButton";
+import PrimaryButton from "../components/PrimaryButton";
+import { theme } from "../theme";
+import { Card } from "../types";
 
 type ParamList = {
   Message: {
@@ -180,13 +180,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    marginTop: 36,
     flexDirection: "column",
     justifyContent: "space-between",
   },
   wrapperActions: {
     flexDirection: "row",
     justifyContent: "center",
+    marginTop: 12,
   },
   noCardRegisteredText: {
     fontSize: 18,

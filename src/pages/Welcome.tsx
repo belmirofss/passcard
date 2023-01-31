@@ -1,9 +1,9 @@
+import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { useNavigation } from "@react-navigation/core";
 
-import TitleAndDescription from "../components/TitleAndDescription";
 import PrimaryButton from "../components/PrimaryButton";
+import TitleAndDescription from "../components/TitleAndDescription";
 
 export default function Welcome() {
   const navigation = useNavigation();
@@ -11,8 +11,8 @@ export default function Welcome() {
   return (
     <View style={styles.container}>
       <TitleAndDescription
-        title="Welcome"
-        description="PASSCARD saves your cards passwords offline and securely."
+        title="Welcome!"
+        description="PASSCARD saves your cards passwords offline and securely. All data only in your smartphone."
       />
 
       <View style={styles.wrapperStartButton}>

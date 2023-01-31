@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import PinContext from "../contexts/Pin";
-import TitleAndDescription from "../components/TitleAndDescription";
-import InputPassword from "../components/InputPassword";
 import AlertSnack from "../components/AlertSnack";
-import PrimaryButton from "../components/PrimaryButton";
 import ConfirmDialog from "../components/ConfirmDialog";
+import InputPassword from "../components/InputPassword";
+import PrimaryButton from "../components/PrimaryButton";
+import TitleAndDescription from "../components/TitleAndDescription";
+import PinContext from "../contexts/Pin";
 
 export default function CreatePin() {
   const pinContext = useContext(PinContext);
@@ -52,18 +52,20 @@ export default function CreatePin() {
           description="For your security, enter a PIN. Remember not to miss it. It will be used for your access."
         />
 
-        <InputPassword
-          label="PIN"
-          password={pin}
-          setPassword={setPin}
-          autoFocus
-        />
-
-        <View style={styles.wrapperCreateButton}>
-          <PrimaryButton
-            text="CREATE"
-            onPress={() => setVisibleConfirmPin(true)}
+        <View style={styles.content}>
+          <InputPassword
+            label="PIN"
+            password={pin}
+            setPassword={setPin}
+            autoFocus
           />
+
+          <View style={styles.wrapperCreateButton}>
+            <PrimaryButton
+              text="CREATE"
+              onPress={() => setVisibleConfirmPin(true)}
+            />
+          </View>
         </View>
       </View>
     </>
@@ -77,6 +79,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   wrapperCreateButton: {
+    marginTop: 12,
+  },
+  content: {
     marginTop: 12,
   },
 });

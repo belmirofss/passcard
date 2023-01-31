@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/core";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AlertSnack from "../components/AlertSnack";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -71,12 +71,14 @@ export default function ChangePIN() {
             autoFocus
           />
 
-          <InputPassword
-            label="New PIN"
-            password={newPin}
-            setPassword={setNewPin}
-            maxLength={4}
-          />
+          <View style={styles.wrapperInputPassword}>
+            <InputPassword
+              label="New PIN"
+              password={newPin}
+              setPassword={setNewPin}
+              maxLength={4}
+            />
+          </View>
         </View>
 
         <PrimaryButton
@@ -94,5 +96,8 @@ const styles = StyleSheet.create({
     padding: 16,
     flexDirection: "column",
     justifyContent: "space-between",
+  },
+  wrapperInputPassword: {
+    marginTop: 12,
   },
 });

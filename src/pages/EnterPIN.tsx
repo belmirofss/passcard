@@ -1,3 +1,5 @@
+import { AdMobInterstitial } from "expo-ads-admob";
+import Constants from "expo-constants";
 import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AlertSnack from "../components/AlertSnack";
@@ -5,8 +7,6 @@ import InputPassword from "../components/InputPassword";
 import PrimaryButton from "../components/PrimaryButton";
 import TitleAndDescription from "../components/TitleAndDescription";
 import PinContext from "../contexts/Pin";
-import { AdMobInterstitial } from "expo-ads-admob";
-import Constants from "expo-constants";
 
 export default function EnterPin() {
   const pinContext = useContext(PinContext);
@@ -45,15 +45,17 @@ export default function EnterPin() {
           description="To view your cards, enter your PIN."
         />
 
-        <InputPassword
-          label="PIN"
-          password={pin}
-          setPassword={setPin}
-          autoFocus
-        />
+        <View style={styles.content}>
+          <InputPassword
+            label="PIN"
+            password={pin}
+            setPassword={setPin}
+            autoFocus
+          />
 
-        <View style={styles.wrapperEnterButton}>
-          <PrimaryButton text="ENTER" onPress={enter} />
+          <View style={styles.wrapperEnterButton}>
+            <PrimaryButton text="ENTER" onPress={enter} />
+          </View>
         </View>
       </View>
     </>
@@ -67,6 +69,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   wrapperEnterButton: {
+    marginTop: 12,
+  },
+  content: {
     marginTop: 12,
   },
 });
