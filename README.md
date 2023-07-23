@@ -1,7 +1,7 @@
 ![Statsfy](https://i.imgur.com/cuMufUI.png "PASSCARD")
 
-# PASSCARD, powered by Expo
-PASSCARD is an app that helps you to remember card passwords. The app saves passwords on your device offline and securely.
+# PASSCARD
+PASSCARD is an app that helps you to remember card passwords. The app saves passwords on your device offline.
 
 [Download now](https://play.google.com/store/apps/details?id=com.yabcompany.passcard)
 
@@ -23,3 +23,5 @@ npm i
 ```
 expo start 
 ```
+
+<a href="https://www.buymeacoffee.com/belmirofss" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 28px !important;width: 119px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
