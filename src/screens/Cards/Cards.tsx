@@ -6,9 +6,9 @@ import { useCards } from "../../hooks/useCards";
 import { Loading } from "../../components/Loading";
 import { ScrollView } from "react-native-gesture-handler";
 import { Text } from "react-native-paper";
-import { PrimaryButton } from "../../components/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
 import { Button } from "react-native-paper";
+import { BuyMeACoffe } from "../../components/BuyMeACoffe";
 
 export const Cards = () => {
   const navigation = useNavigation();
@@ -19,17 +19,18 @@ export const Cards = () => {
   }
 
   return (
-    <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          padding: theme.spacing.l,
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
+    <View
+      style={{
+        flex: 1,
+        padding: theme.spacing.l,
+        flexDirection: "column",
+        justifyContent: "space-between",
+        gap: theme.spacing.l,
+      }}
+    >
+      <ScrollView>
         <View>
-          {cards.length > 0 && (
+          {!!cards.length && (
             <View
               style={{
                 gap: 8,
@@ -41,7 +42,7 @@ export const Cards = () => {
             </View>
           )}
 
-          {cards.length == 0 && (
+          {!cards.length && (
             <View
               style={{
                 alignItems: "center",
@@ -70,7 +71,9 @@ export const Cards = () => {
             </View>
           )}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+
+      {!!cards.length && <BuyMeACoffe />}
+    </View>
   );
 };

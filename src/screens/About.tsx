@@ -3,6 +3,7 @@ import appInfo from "../../app.json";
 import { TitleAndDescription } from "../components/TitleAndDescription";
 import { theme } from "../theme";
 import { Text } from "react-native-paper";
+import { BuyMeACoffe } from "../components/BuyMeACoffe";
 
 export const About = () => {
   return (
@@ -10,6 +11,7 @@ export const About = () => {
       style={{
         flex: 1,
         padding: theme.spacing.l,
+        gap: theme.spacing.l,
       }}
     >
       <TitleAndDescription
@@ -17,10 +19,11 @@ export const About = () => {
         description="All your cards passwords are saved only and exclusively on your device. The app will never save or collect any information."
       />
 
+      <BuyMeACoffe />
+
       <Text
         style={{
           fontSize: theme.fontSizes.s,
-          marginTop: theme.spacing.l,
           textAlign: "center",
           fontWeight: "bold",
         }}

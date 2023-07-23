@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
 import * as SQLite from "expo-sqlite";
 import { useNotification } from "../hooks/useNotification";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type AppContextData = {
   database: SQLite.WebSQLDatabase;
@@ -59,6 +60,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       transaction.executeSql(`DELETE FROM CARDS`, []);
     });
 
+    await AsyncStorage.clear();
     await SecureStore.deleteItemAsync(PIN_KEY);
     logout();
   };

@@ -18,3 +18,5 @@ export const COLORS: Color[] = [
 
 export const MAX_LENGTH_PASSWORD = 12;
 export const MAX_LENGTH_NAME = 36;
+
+export const BUY_ME_A_COFFEE_URL = "https://www.buymeacoffee.com/belmirofss"
