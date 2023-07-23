@@ -3,7 +3,7 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from "@react-navigation/stack";
-import EnterPin from "../pages/EnterPIN";
+import EnterPin from "../screens/EnterPIN";
 
 export default function WithPinStackNavigation() {
   const StackNavigator = createStackNavigator();

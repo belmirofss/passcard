@@ -3,8 +3,8 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from "@react-navigation/stack";
-import Welcome from "../pages/Welcome";
-import CreatePin from "../pages/CreatePIN";
+import Welcome from "../screens/Welcome";
+import CreatePin from "../screens/CreatePIN";
 
 export default function WithoutPinStackNavigation() {
   const StackNavigator = createStackNavigator();

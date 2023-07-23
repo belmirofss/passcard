@@ -1,11 +1,11 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Cards from "../pages/Cards";
-import CardForm from "../pages/CardForm";
+import Cards from "../screens/Cards";
+import CardForm from "../screens/CardForm";
 import Header from "../components/Header";
-import ClearAllData from "../pages/ClearAllData";
-import About from "../pages/About";
-import ChangePIN from "../pages/ChangePIN";
+import ClearAllData from "../screens/ClearAllData";
+import About from "../screens/About";
+import ChangePIN from "../screens/ChangePIN";
 
 export default function LoggedPinStackNavigation() {
   const StackNavigator = createStackNavigator();
