@@ -18,7 +18,7 @@ export default function Welcome() {
       <View style={styles.wrapperStartButton}>
         <PrimaryButton
           text="START"
-          onPress={() => navigation.navigate("CreatePin" as never)}
+          onPress={() => navigation.navigate("CreatePin")}
         />
       </View>
     </View>

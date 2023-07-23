@@ -30,12 +30,9 @@ export default function ChangePIN() {
       }
 
       pinContext.savePin(newPin);
-      navigation.navigate(
-        "Cards" as never,
-        {
-          message: "PIN changed successfully!",
-        } as never
-      );
+      navigation.navigate("Cards", {
+        message: "PIN changed successfully!",
+      });
     } else {
       setCurrentPin("");
       setNewPin("");

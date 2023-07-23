@@ -22,17 +22,17 @@ export default function Header({
 
   const changePinButtonClick = (): void => {
     setVisibleMenu(false);
-    navigation.navigate("ChangePin" as never);
+    navigation.navigate("ChangePin");
   };
 
   const clearAllDataButtonClick = (): void => {
     setVisibleMenu(false);
-    navigation.navigate("ClearAllData" as never);
+    navigation.navigate("ClearAllData");
   };
 
   const aboutButtonClick = (): void => {
     setVisibleMenu(false);
-    navigation.navigate("About" as never);
+    navigation.navigate("About");
   };
 
   return (

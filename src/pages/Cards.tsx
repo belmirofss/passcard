@@ -74,7 +74,7 @@ export default function Cards() {
     setAlertMessage(route.params?.message || "");
     navigation.setParams({
       message: null,
-    } as never);
+    });
     callList();
   }, [isFocused]);
 
@@ -133,10 +133,9 @@ export default function Cards() {
                 <IconButton
                   icon="circle-edit-outline"
                   onPress={() =>
-                    navigation.navigate(
-                      "EditCard" as never,
-                      { card: cards[activeSlideIndex] } as never
-                    )
+                    navigation.navigate("EditCard", {
+                      card: cards[activeSlideIndex],
+                    })
                   }
                 />
 
@@ -169,7 +168,7 @@ export default function Cards() {
 
         <PrimaryButton
           text="NEW CARD"
-          onPress={() => navigation.navigate("NewCard" as never)}
+          onPress={() => navigation.navigate("NewCard")}
         />
       </View>
     </>

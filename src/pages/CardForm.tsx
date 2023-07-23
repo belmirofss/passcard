@@ -77,14 +77,11 @@ export default function CardForm() {
       });
     }
 
-    navigation.navigate(
-      "Cards" as never,
-      {
-        message: card?.id
-          ? "Card edited successfully!"
-          : "Card created successfully!",
-      } as never
-    );
+    navigation.navigate("Cards", {
+      message: card?.id
+        ? "Card edited successfully!"
+        : "Card created successfully!",
+    });
   }
 
   return (
