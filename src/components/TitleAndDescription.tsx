@@ -1,6 +1,7 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Logo from "./Logo";
+import { View } from "react-native";
+import { Logo } from "./Logo";
+import { theme } from "../theme";
+import { Text } from "react-native-paper";
 
 type Props = {
   title: string;
@@ -8,33 +9,35 @@ type Props = {
   notShowLogo?: boolean;
 };
 
-export default function TitleAndDescription({
+export const TitleAndDescription = ({
   title,
   description,
   notShowLogo,
-}: Props) {
+}: Props) => {
   return (
     <View>
       {!notShowLogo && (
-        <View style={styles.wrapperLogo}>
+        <View style={{ marginBottom: theme.spacing.m }}>
           <Logo />
         </View>
       )}
-      <Text style={styles.titleText}>{title}</Text>
-      {description && <Text style={styles.descriptionText}>{description}</Text>}
+      <Text
+        style={{
+          fontSize: theme.fontSizes.l,
+          fontWeight: "bold",
+        }}
+      >
+        {title}
+      </Text>
+      {description && (
+        <Text
+          style={{
+            fontSize: theme.fontSizes.m,
+          }}
+        >
+          {description}
+        </Text>
+      )}
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  wrapperLogo: {
-    marginBottom: 12,
-  },
-  titleText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  descriptionText: {
-    fontSize: 18,
-  },
-});
+};

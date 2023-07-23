@@ -1,30 +1,32 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import TitleAndDescription from "../components/TitleAndDescription";
+import { View } from "react-native";
 import appInfo from "../../app.json";
+import { TitleAndDescription } from "../components/TitleAndDescription";
+import { theme } from "../theme";
+import { Text } from "react-native-paper";
 
-export default function About() {
+export const About = () => {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        flex: 1,
+        padding: theme.spacing.l,
+      }}
+    >
       <TitleAndDescription
-        title="The app saves your card passwords offline and securely."
-        description="All your cards passwords are saved only and exclusively on your device. The app will never save or collect any information entered."
+        title="The app saves your card passwords offline."
+        description="All your cards passwords are saved only and exclusively on your device. The app will never save or collect any information."
       />
 
-      <Text style={styles.versionText}>Version: {appInfo.expo.version}</Text>
+      <Text
+        style={{
+          fontSize: theme.fontSizes.s,
+          marginTop: theme.spacing.l,
+          textAlign: "center",
+          fontWeight: "bold",
+        }}
+      >
+        Version: {appInfo.expo.version}
+      </Text>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  versionText: {
-    fontSize: 12,
-    marginTop: 18,
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-});
+};

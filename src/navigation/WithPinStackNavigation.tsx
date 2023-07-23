@@ -1,11 +1,10 @@
-import React from "react";
 import {
   createStackNavigator,
   StackNavigationOptions,
 } from "@react-navigation/stack";
-import EnterPin from "../screens/EnterPIN";
+import { EnterPin } from "../screens/EnterPIN";
 
-export default function WithPinStackNavigation() {
+export const WithPinStackNavigation = () => {
   const StackNavigator = createStackNavigator();
 
   const screenOptionStyle: StackNavigationOptions = {
@@ -17,4 +16,4 @@ export default function WithPinStackNavigation() {
       <StackNavigator.Screen name="EnterPin" component={EnterPin} />
     </StackNavigator.Navigator>
   );
-}
+};

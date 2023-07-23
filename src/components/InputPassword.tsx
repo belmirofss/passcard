@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
-import { Button, TextInput } from "react-native-paper";
+import { Button, Text, TextInput } from "react-native-paper";
 import { theme } from "../theme";
 
 type Props = {
   label: string;
-  password: string;
-  setPassword: (password: string) => void;
+  value: string;
+  onChange: (value: string) => void;
   maxLength?: number;
   autoFocus?: boolean;
 };
 
-export default function InputPassword({
+export const InputPassword = ({
   label,
-  password,
-  setPassword,
+  value,
+  onChange,
   maxLength,
   autoFocus,
-}: Props) {
+}: Props) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   return (
@@ -25,8 +24,8 @@ export default function InputPassword({
       <TextInput
         mode="outlined"
         label={label}
-        value={password}
-        onChangeText={(text) => setPassword(text)}
+        value={value}
+        onChangeText={(text) => onChange(text)}
         keyboardType="numeric"
         maxLength={maxLength}
         secureTextEntry={secureTextEntry}
@@ -44,17 +43,13 @@ export default function InputPassword({
         mode="text"
         color={theme.colors.secondary}
         onPress={() => setSecureTextEntry(!secureTextEntry)}
-        labelStyle={styles.button}
       >
-        {secureTextEntry ? "Show password" : "Hide password"}
+        <Text
+          style={{ fontSize: theme.fontSizes.s, color: theme.colors.primary }}
+        >
+          {secureTextEntry ? "Show password" : "Hide password"}
+        </Text>
       </Button>
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  button: {
-    color: theme.colors.primary,
-    fontSize: 11,
-  },
-});
+};

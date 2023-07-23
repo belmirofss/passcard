@@ -1,20 +1,18 @@
-import React from "react";
-import PinContext from "./contexts/Pin";
+import { useAppContext } from "./hooks/useAppContext";
+import { LoggedPinStackNavigation } from "./navigation/LoggedPinStackNavigation";
+import { WithPinStackNavigation } from "./navigation/WithPinStackNavigation";
+import { WithoutPinStackNavigation } from "./navigation/WithoutPinStackNavigation";
 
-import LoggedPinStackNavigation from "./navigation/LoggedPinStackNavigation";
-import WithoutPinStackNavigation from "./navigation/WithoutPinStackNavigation";
-import WithPinStackNavigation from "./navigation/WithPinStackNavigation";
+export const Routes = () => {
+  const { pin, logged } = useAppContext();
 
-export default function Routes() {
-  const { hasPin, logged } = React.useContext(PinContext);
-
-  if (hasPin && logged) {
+  if (pin && logged) {
     return <LoggedPinStackNavigation />;
   }
 
-  if (hasPin && !logged) {
+  if (pin && !logged) {
     return <WithPinStackNavigation />;
   }
 
   return <WithoutPinStackNavigation />;
-}
+};

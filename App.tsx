@@ -1,12 +1,10 @@
-import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
-
-import Routes from "./src/Routes";
-import { PinProvider } from "./src/contexts/Pin";
+import { AppProvider } from "./src/contexts/App";
+import { Routes } from "./src/Routes";
+import { NotificationProvider } from "./src/contexts/Notification";
 import { theme } from "./src/theme";
-import Database from "./src/database";
 
 const paperTheme = {
   ...DefaultTheme,
@@ -20,14 +18,14 @@ const paperTheme = {
 };
 
 export default function App() {
-  new Database();
-
   return (
     <PaperProvider theme={paperTheme}>
       <NavigationContainer>
-        <PinProvider>
-          <Routes />
-        </PinProvider>
+        <NotificationProvider>
+          <AppProvider>
+            <Routes />
+          </AppProvider>
+        </NotificationProvider>
         <StatusBar hidden />
       </NavigationContainer>
     </PaperProvider>

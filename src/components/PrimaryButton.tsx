@@ -1,6 +1,4 @@
-import React from "react";
-import { StyleSheet, Text } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 import { theme } from "../theme";
 
 type Props = {
@@ -8,32 +6,28 @@ type Props = {
   onPress: () => void;
 };
 
-export default function PrimaryButton({ text, onPress }: Props) {
+export const PrimaryButton = ({ text, onPress }: Props) => {
   return (
     <Button
-      style={styles.button}
+      style={{ width: "100%", marginTop: theme.spacing.m }}
       contentStyle={{
-        paddingVertical: 12,
+        paddingVertical: theme.spacing.m,
       }}
       theme={{
-        roundness: 100,
+        roundness: theme.roundless,
       }}
       mode="contained"
       onPress={onPress}
     >
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text
+        style={{
+          fontSize: theme.fontSizes.m,
+          fontWeight: "bold",
+          color: theme.colors.secondary,
+        }}
+      >
+        {text}
+      </Text>
     </Button>
   );
-}
-
-const styles = StyleSheet.create({
-  button: {
-    width: "100%",
-    marginTop: 12,
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: theme.colors.secondary,
-  },
-});
+};

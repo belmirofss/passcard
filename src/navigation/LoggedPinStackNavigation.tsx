@@ -1,13 +1,12 @@
-import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Cards from "../screens/Cards";
-import CardForm from "../screens/CardForm";
-import Header from "../components/Header";
-import ClearAllData from "../screens/ClearAllData";
-import About from "../screens/About";
-import ChangePIN from "../screens/ChangePIN";
+import { Cards } from "../screens/Cards/Cards";
+import { CardForm } from "../screens/CardForm";
+import { Header } from "../components/Header";
+import { ClearAllData } from "../screens/ClearAllData";
+import { About } from "../screens/About";
+import { ChangePIN } from "../screens/ChangePIN";
 
-export default function LoggedPinStackNavigation() {
+export const LoggedPinStackNavigation = () => {
   const StackNavigator = createStackNavigator();
 
   return (
@@ -16,7 +15,9 @@ export default function LoggedPinStackNavigation() {
         name="Cards"
         component={Cards}
         options={{
-          header: () => <Header title="My cards" showMenuButton />,
+          header: () => (
+            <Header title="My cards" showNewCardButton showMenuButton />
+          ),
         }}
       />
       <StackNavigator.Screen
@@ -56,4 +57,4 @@ export default function LoggedPinStackNavigation() {
       />
     </StackNavigator.Navigator>
   );
-}
+};

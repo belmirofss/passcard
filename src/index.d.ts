@@ -6,9 +6,7 @@ export declare global {
       ChangePin: undefined;
       ClearAllData: undefined;
       About: undefined;
-      Cards: {
-        message?: string;
-      };
+      Cards: undefined;
       EditCard: {
         card: Card;
       };

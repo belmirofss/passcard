@@ -1,65 +1,49 @@
-import React, { useContext, useState } from "react";
-import { StyleSheet, View } from "react-native";
-import AlertSnack from "../components/AlertSnack";
-import InputPassword from "../components/InputPassword";
-import PrimaryButton from "../components/PrimaryButton";
-import TitleAndDescription from "../components/TitleAndDescription";
-import PinContext from "../contexts/Pin";
+import { useState } from "react";
+import { View } from "react-native";
+import { InputPassword } from "../components/InputPassword";
+import { PrimaryButton } from "../components/PrimaryButton";
+import { TitleAndDescription } from "../components/TitleAndDescription";
+import { useAppContext } from "../hooks/useAppContext";
+import { theme } from "../theme";
 
-export default function EnterPin() {
-  const pinContext = useContext(PinContext);
-
+export const EnterPin = () => {
+  const { login } = useAppContext();
   const [pin, setPin] = useState("");
-  const [alertVisible, setAlertVisible] = useState(false);
-
-  async function enter() {
-    if (!pinContext.login(pin)) {
-      setPin("");
-      setAlertVisible(true);
-    }
-  }
 
   return (
-    <>
-      <AlertSnack
-        message="Wrong PIN!"
-        visible={alertVisible}
-        onDismiss={() => setAlertVisible(false)}
+    <View
+      style={{
+        flex: 1,
+        padding: theme.spacing.l,
+        justifyContent: "flex-end",
+      }}
+    >
+      <TitleAndDescription
+        title="Enter your PIN"
+        description="To enter and see your cards"
       />
 
-      <View style={styles.container}>
-        <TitleAndDescription
-          title="Enter with your PIN"
-          description="To view your cards, enter your PIN."
-        />
+      <View
+        style={{
+          marginTop: theme.spacing.m,
+        }}
+      >
+        <InputPassword label="PIN" value={pin} onChange={setPin} autoFocus />
 
-        <View style={styles.content}>
-          <InputPassword
-            label="PIN"
-            password={pin}
-            setPassword={setPin}
-            autoFocus
+        <View
+          style={{
+            marginTop: 12,
+          }}
+        >
+          <PrimaryButton
+            text="ENTER"
+            onPress={() => {
+              login(pin);
+              setPin("");
+            }}
           />
-
-          <View style={styles.wrapperEnterButton}>
-            <PrimaryButton text="ENTER" onPress={enter} />
-          </View>
         </View>
       </View>
-    </>
+    </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    justifyContent: "flex-end",
-  },
-  wrapperEnterButton: {
-    marginTop: 12,
-  },
-  content: {
-    marginTop: 12,
-  },
-});
+};

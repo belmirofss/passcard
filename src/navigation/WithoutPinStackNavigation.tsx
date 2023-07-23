@@ -1,12 +1,11 @@
-import React from "react";
 import {
   createStackNavigator,
   StackNavigationOptions,
 } from "@react-navigation/stack";
-import Welcome from "../screens/Welcome";
-import CreatePin from "../screens/CreatePIN";
+import { Welcome } from "../screens/Welcome";
+import { CreatePin } from "../screens/CreatePIN";
 
-export default function WithoutPinStackNavigation() {
+export const WithoutPinStackNavigation = () => {
   const StackNavigator = createStackNavigator();
 
   const screenOptionStyle: StackNavigationOptions = {
@@ -19,4 +18,4 @@ export default function WithoutPinStackNavigation() {
       <StackNavigator.Screen name="CreatePin" component={CreatePin} />
     </StackNavigator.Navigator>
   );
-}
+};

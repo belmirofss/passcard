@@ -1,24 +1,28 @@
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Appbar, Menu } from "react-native-paper";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { theme } from "../theme";
+import { useState } from "react";
 
 type Props = {
   title: string;
+  showNewCardButton?: boolean;
   showBackButton?: boolean;
   showMenuButton?: boolean;
 };
 
-export default function Header({
+const ICON_SIZE = 24;
+
+export const Header = ({
   title,
+  showNewCardButton,
   showBackButton,
   showMenuButton,
-}: Props) {
+}: Props) => {
   const navigation = useNavigation();
 
-  const [visibleMenu, setVisibleMenu] = React.useState(false);
+  const [visibleMenu, setVisibleMenu] = useState(false);
 
   const changePinButtonClick = (): void => {
     setVisibleMenu(false);
@@ -45,6 +49,19 @@ export default function Header({
       statusBarHeight={0}
     >
       <Appbar.Content title={title} />
+
+      {showNewCardButton && (
+        <Appbar.Action
+          icon={() => (
+            <MaterialCommunityIcons
+              name="credit-card-plus"
+              size={ICON_SIZE}
+              color={Colors.PRIMARY}
+            />
+          )}
+          onPress={() => navigation.navigate("NewCard")}
+        />
+      )}
       {showBackButton && <Appbar.BackAction onPress={navigation.goBack} />}
       {showMenuButton && (
         <Menu
@@ -55,7 +72,7 @@ export default function Header({
               icon={() => (
                 <MaterialIcons
                   name="settings"
-                  size={24}
+                  size={ICON_SIZE}
                   color={Colors.PRIMARY}
                 />
               )}
@@ -69,13 +86,10 @@ export default function Header({
             icon={() => (
               <MaterialCommunityIcons
                 name="key-change"
-                size={24}
+                size={ICON_SIZE}
                 color={Colors.PRIMARY}
               />
             )}
-            titleStyle={{
-              marginRight: 0,
-            }}
             onPress={changePinButtonClick}
           />
           <Menu.Item
@@ -83,7 +97,7 @@ export default function Header({
             icon={() => (
               <MaterialCommunityIcons
                 name="delete-forever"
-                size={24}
+                size={ICON_SIZE}
                 color={Colors.PRIMARY}
               />
             )}
@@ -94,7 +108,7 @@ export default function Header({
             icon={() => (
               <MaterialCommunityIcons
                 name="information"
-                size={24}
+                size={ICON_SIZE}
                 color={Colors.PRIMARY}
               />
             )}
@@ -104,4 +118,4 @@ export default function Header({
       )}
     </Appbar.Header>
   );
-}
+};

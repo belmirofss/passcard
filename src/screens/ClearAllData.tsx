@@ -1,53 +1,38 @@
-import React, { useContext, useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { deleteAllCards } from "../api/cards";
-import ConfirmDialog from "../components/ConfirmDialog";
-import PrimaryButton from "../components/PrimaryButton";
-import TitleAndDescription from "../components/TitleAndDescription";
-import PinContext from "../contexts/Pin";
+import { View } from "react-native";
+import { PrimaryButton } from "../components/PrimaryButton";
+import { TitleAndDescription } from "../components/TitleAndDescription";
+import { useAppContext } from "../hooks/useAppContext";
+import { useNotification } from "../hooks/useNotification";
+import { theme } from "../theme";
 
-export default function ClearAllData() {
-  const pinContext = useContext(PinContext);
-
-  const [visibleConfirmClearAllData, setVisibleConfirmClearAllData] =
-    useState(false);
-
-  async function clearAllData() {
-    await deleteAllCards();
-    await pinContext.clearPin();
-  }
+export const ClearAllData = () => {
+  const { clearAccount } = useAppContext();
+  const { showDialog } = useNotification();
 
   return (
-    <>
-      <ConfirmDialog
-        title="Again, confirm the action?"
-        paragraph="When you clear all your cards and passwords, the data cannot be recovered."
-        visible={visibleConfirmClearAllData}
-        onDismiss={() => setVisibleConfirmClearAllData(false)}
-        onYes={clearAllData}
-        onNo={() => setVisibleConfirmClearAllData(false)}
+    <View
+      style={{
+        flex: 1,
+        padding: theme.spacing.l,
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <TitleAndDescription
+        notShowLogo
+        title="Do you want to clear all your cards and passwords?"
+        description="Remember that everything is saved on your device safely and offline."
       />
-
-      <View style={styles.container}>
-        <TitleAndDescription
-          notShowLogo
-          title="Do you want to clear all your cards and passwords?"
-          description="Remember that everything is saved on your device safely and offline."
-        />
-        <PrimaryButton
-          text="CLEAR ALL DATA"
-          onPress={() => setVisibleConfirmClearAllData(true)}
-        />
-      </View>
-    </>
+      <PrimaryButton
+        text="CLEAR ALL DATA"
+        onPress={() => {
+          showDialog(
+            "Again, confirm the action?",
+            "When you clear all your cards and passwords, the data cannot be recovered.",
+            clearAccount
+          );
+        }}
+      />
+    </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-});
+};

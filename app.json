@@ -2,7 +2,7 @@
   "expo": {
     "name": "PASSCARD",
     "slug": "PASSCARD",
-    "version": "1.3.1",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "com.yabcompany.passcard",
-      "versionCode": 7,
+      "versionCode": 8,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#d9d9d9"
