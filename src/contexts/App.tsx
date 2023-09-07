@@ -8,11 +8,13 @@ type AppContextData = {
   database: SQLite.WebSQLDatabase;
   logged: boolean;
   pin: string;
+  adShowed: boolean;
   savePin(pin: string): Promise<void>;
   changePin(newPin: string): Promise<void>;
   clearAccount(): Promise<void>;
   login(pin: string): void;
   logout(): void;
+  markAdAsShowed(): void;
 };
 
 const PIN_KEY = "PASSPORT.PIN";
@@ -24,6 +26,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const database = SQLite.openDatabase(DB_KEY);
 
   const [logged, setLogged] = useState(false);
+  const [adShowed, setAdShowed] = useState(false);
   const [pin, setPin] = useState("");
   const { showSnack } = useNotification();
 
@@ -96,6 +99,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setPin(pin || "");
   };
 
+  const markAdAsShowed = () => setAdShowed(true);
+
   useEffect(() => {
     initDatabase();
     verifyIfHasPin();
@@ -107,11 +112,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         database,
         logged,
         pin,
+        adShowed,
         savePin,
         changePin,
         clearAccount,
         login,
         logout,
+        markAdAsShowed,
       }}
     >
       {children}

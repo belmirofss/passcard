@@ -20,3 +20,5 @@ export const MAX_LENGTH_PASSWORD = 12;
 export const MAX_LENGTH_NAME = 36;
 
 export const BUY_ME_A_COFFEE_URL = "https://www.buymeacoffee.com/belmirofss"
+
+export const AD_UNIT_ID = "ca-app-pub-6575307967199593/6000899278"

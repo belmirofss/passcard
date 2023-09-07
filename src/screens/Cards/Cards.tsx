@@ -9,6 +9,7 @@ import { Text } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { Button } from "react-native-paper";
 import { BuyMeACoffe } from "../../components/BuyMeACoffe";
+import { Ad } from "../../components/Ad";
 
 export const Cards = () => {
   const navigation = useNavigation();
@@ -28,6 +29,7 @@ export const Cards = () => {
         gap: theme.spacing.l,
       }}
     >
+      <Ad />
       <ScrollView>
         <View>
           {!!cards.length && (
