@@ -1,4 +1,4 @@
-<img size=100 src="https://i.imgur.com/JbAdrqJ.png" alt="PASSCARD" />
+<img height=100 src="https://i.imgur.com/JbAdrqJ.png" alt="PASSCARD" />
 
 # PASSCARD
 PASSCARD is an app that helps you to remember card passwords. The app saves passwords on your device offline.
