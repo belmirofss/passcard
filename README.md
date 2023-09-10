@@ -1,4 +1,3 @@
-![PASSCARD](https://i.imgur.com/JbAdrqJ.png "PASSCARD")
 <img size=100 src="https://i.imgur.com/JbAdrqJ.png" alt="PASSCARD" />
 
 # PASSCARD
