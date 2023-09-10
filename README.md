@@ -1,4 +1,4 @@
-![Statsfy](https://i.imgur.com/cuMufUI.png "PASSCARD")
+![Statsfy](https://i.imgur.com/JbAdrqJ.png "PASSCARD")
 
 # PASSCARD
 PASSCARD is an app that helps you to remember card passwords. The app saves passwords on your device offline.
